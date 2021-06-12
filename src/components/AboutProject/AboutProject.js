@@ -3,7 +3,7 @@ import {SectionTitle} from "../SectionTitle/SectionTitle";
 export const AboutProject = () => {
   return (
     <section className="about-project">
-      <SectionTitle title="О проекте"/>
+      <SectionTitle title="О проекте" id=""/>
       <article className="about-project__group">
         <div className="about-project__text">
           <h3 className="about-project__text-title">Дипломный проект включал 5 этапов</h3>

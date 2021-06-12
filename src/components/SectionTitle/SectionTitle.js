@@ -2,7 +2,7 @@
 export const SectionTitle = (props) => {
   return (
     <>
-     <h2 className="section-title">{props.title}</h2>
+     <h2 className="section-title" id={props.id}>{props.title}</h2>
     </>
   );
 }
