@@ -1,0 +1,47 @@
+.movies-card__list-item {
+  color: #FFFFFF;
+}
+
+.movies-card__item-image {
+  width: 270px;
+  height: 151px;
+  object-fit: cover;
+}
+
+.movies-card__item-group {
+  width: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 0 0;
+  padding-bottom: 29px;
+  border-bottom: 1px solid #424242;
+}
+
+.movies-card__item-title {
+  margin: 0;
+  max-width: 226px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.movies-card__item-like {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: none;
+  padding: 0;
+  background-color: #313131;
+  background-image: url("../../images/heart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movies-card__item-time {
+  margin: 6px 0 0 0;
+  color: #8B8B8B;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+}
