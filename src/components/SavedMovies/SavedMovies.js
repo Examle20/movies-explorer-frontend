@@ -1,14 +1,13 @@
-import "./MoviesCardList.css"
-import React from "react";
+import {allFilms} from "../../utils/constans";
 import {MoviesCard} from "../MoviesCard/MoviesCard";
-import {allFilms} from "../../utils/constans"
+import React from "react";
 
-export const MoviesCardList = (props) => {
+export const SavedMovies = (props) => {
 
   return (
     <section className="movies-card">
       <ul className="movies-card__list">
-        {allFilms.slice(0,12).map((item) => {
+        {allFilms.slice(0,3).map((item) => {
           return <MoviesCard src={item.src} title={item.title} time={item.time}/>
         })}
       </ul>
