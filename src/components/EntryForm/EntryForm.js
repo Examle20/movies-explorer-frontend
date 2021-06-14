@@ -1,6 +1,6 @@
 import React from "react";
 import "./EntryForm.css"
-import {Input} from "../Input/Input";
+
 export const EntryForm = (props) => {
   return (
     <div className="entry-form">

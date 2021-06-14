@@ -1,15 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import {Navigation} from "../Navigation/Navigation";
 
 export const Header = () => {
   return (
     <header className='header'>
       <div className="header__container">
-        <div className='header__logo'/>
-        <div className='header__group'>
-          <button className='header__link'>Регистрация</button>
-          <button className='header__link'>Войти</button>
-        </div>
+        <Link to="/" className='header__logo'/>
+        <Navigation/>
       </div>
     </header>
   );

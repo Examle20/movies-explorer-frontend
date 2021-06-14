@@ -1,0 +1,45 @@
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-right: 20px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navigation__link:last-of-type {
+  margin-right: 0;
+}
+
+.navigation__link_account {
+  font-size: 13px;
+  margin-right: 7px;
+  margin-left: 11px;
+}
+
+.navigation__link_films {
+  font-weight: 500;
+}
+
+.navigation__container {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  width: 100px;
+}
+
+.navigation__link-image {
+  width: 26px;
+  height: 26px;
+  background-color: #313131;
+  background-image: url("../../images/profile.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  margin-right: 3px;
+}

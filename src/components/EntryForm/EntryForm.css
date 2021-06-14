@@ -65,6 +65,10 @@
   margin: 16px 0 0 0;
 }
 
+.entry-form__form-item:last-of-type{
+  margin-bottom: 152px;
+}
+
 .entry-form__form-item_login {
   margin-bottom: 221px;
 }
