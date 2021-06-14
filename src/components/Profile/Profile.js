@@ -1,7 +1,17 @@
 import "./Profile.css"
 import {Input} from "../Input/Input";
+import React from "react";
 
-export const Profile = () => {
+export const Profile = (props) => {
+
+  React.useEffect(() => {
+    props.onLoggedIn(true)
+
+    return () => {
+      props.onLoggedIn(false)
+    }
+  })
+
   return (
     <div className="profile">
       <h1 className="profile__title">Привет, Виталий!</h1>

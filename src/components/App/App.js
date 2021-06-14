@@ -25,13 +25,13 @@ function App() {
           <Main onIsHeaderMain={setIsHeaderMain}/>
         </Route>
         <Route path="/movies">
-          <Movies/>
+          <Movies onLoggedIn={setLoggedIn}/>
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies/>
+          <SavedMovies onLoggedIn={setLoggedIn}/>
         </Route>
         <Route path="/profile">
-          <Profile/>
+          <Profile onLoggedIn={setLoggedIn}/>
         </Route>
 
         <Route path="/signin">
