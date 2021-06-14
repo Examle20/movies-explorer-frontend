@@ -1,10 +1,19 @@
 import React from "react";
 import "./EntryForm.css"
+import {Link} from "react-router-dom";
 
 export const EntryForm = (props) => {
+
+  React.useEffect(() => {
+    props.onHeaderAndFooter(false)
+
+    return ()=> {
+      props.onHeaderAndFooter(true)
+    }
+  })
   return (
     <div className="entry-form">
-      <div className="entry-form__logo"/>
+      <Link to="/" className="entry-form__logo"/>
       <h1 className="entry-form__title">{props.title}</h1>
       <form action="" className="entry-form__form">
         {props.children}

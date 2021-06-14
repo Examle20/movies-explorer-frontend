@@ -8,10 +8,12 @@ import {AboutMe} from "../AboutMe/AboutMe";
 import {Portfolio} from "../Portfolio/Portfolio";
 
 export const Main = (props) => {
+
   React.useEffect(()=> {
     props.onIsHeaderMain(true)
     return () =>{props.onIsHeaderMain(false)}
   }, [])
+
   return (
     <>
       <Promo />

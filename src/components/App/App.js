@@ -15,9 +15,11 @@ function App() {
 
   const [loggedIn, setLoggedIn] = React.useState(false)
   const [isHeaderMain, setIsHeaderMain] = React.useState(false)
+  const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true)
+
   return (
     <div className="app">
-      <Header loggedIn={loggedIn} isHeaderMain={isHeaderMain}/>
+      {isHeaderAndFooter && <Header loggedIn={loggedIn} isHeaderMain={isHeaderMain}/>}
       <Switch>
         <Route exact path="/">
           <Main onIsHeaderMain={setIsHeaderMain}/>
@@ -33,13 +35,13 @@ function App() {
         </Route>
 
         <Route path="/signin">
-          <Login/>
+          <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
         <Route path="/signup">
-          <Register/>
+          <Register onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
       </Switch>
-      <Footer/>
+      {isHeaderAndFooter && <Footer/>}
     </div>
   );
 }

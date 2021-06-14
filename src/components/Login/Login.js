@@ -6,6 +6,7 @@ export const Login = (props) => {
   return (
     <>
       <EntryForm
+        onHeaderAndFooter={props.onHeaderAndFooter}
         title="Рады видеть!"
         button="Зарегистрироваться"
         switch="Еще не зарегистрированы?"

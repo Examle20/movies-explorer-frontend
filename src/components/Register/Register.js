@@ -6,6 +6,7 @@ export const Register = (props) => {
   return (
     <>
       <EntryForm
+        onHeaderAndFooter={props.onHeaderAndFooter}
         title="Добро пожаловать!"
         button="Зарегистрироваться"
         switch="Уже зарегистрированы?"
