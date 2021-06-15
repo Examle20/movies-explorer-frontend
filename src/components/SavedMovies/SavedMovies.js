@@ -7,7 +7,7 @@ import {MoviesCardList} from "../MoviesCardList/MoviesCardList";
 export const SavedMovies = (props) => {
   React.useEffect(() => {
     props.onLoggedIn(true)
-
+    props.onIsCardDelete(true)
     return () => {
       props.onLoggedIn(false)
     }
@@ -15,7 +15,7 @@ export const SavedMovies = (props) => {
   return (
     <>
       <SearchForm/>
-      <MoviesCardList/>
+      <MoviesCardList isCardDelete={props.isCardDelete}/>
     </>
   );
 }

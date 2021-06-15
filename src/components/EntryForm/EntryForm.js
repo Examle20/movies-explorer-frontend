@@ -19,7 +19,7 @@ export const EntryForm = (props) => {
         {props.children}
         <button type="submit" className="entry-form__form-button">{props.button}</button>
       </form>
-      <p className="entry-form__switch">{props.switch}<a href="" className="entry-form__switch-link">{props.link}</a></p>
+      <p className="entry-form__switch">{props.switch}<Link to={props.to} className="entry-form__switch-link">{props.link}</Link></p>
     </div>
   );
 }

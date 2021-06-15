@@ -8,9 +8,10 @@ export const Login = (props) => {
       <EntryForm
         onHeaderAndFooter={props.onHeaderAndFooter}
         title="Рады видеть!"
-        button="Зарегистрироваться"
+        button="Войти"
         switch="Еще не зарегистрированы?"
-        link="Войти"
+        link="Регистрация"
+        to="signup"
         children={(
           <>
             <div className="entry-form__form-item">

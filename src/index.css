@@ -14,3 +14,7 @@
 @import "./components/Techs/Techs.css";
 
 @import "./components/AboutMe/AboutMe.css";
+
+.page {
+  background-color: #202020;
+}

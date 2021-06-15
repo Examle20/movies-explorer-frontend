@@ -26,7 +26,7 @@
   line-height: 16px;
 }
 
-.movies-card__item-like {
+.movies-card__item-button {
   width: 24px;
   height: 24px;
   border-radius: 100%;
@@ -36,6 +36,10 @@
   background-image: url("../../images/heart.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.movies-card__item-button_delete {
+  background-image: url("../../images/delete-card.svg");
 }
 
 .movies-card__item-time {

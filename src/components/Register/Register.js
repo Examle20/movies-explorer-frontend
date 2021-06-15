@@ -11,6 +11,7 @@ export const Register = (props) => {
         button="Зарегистрироваться"
         switch="Уже зарегистрированы?"
         link="Войти"
+        to="signin"
         children={(
           <>
             <div className="entry-form__form-item">

@@ -16,6 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false)
   const [isHeaderMain, setIsHeaderMain] = React.useState(false)
   const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true)
+  const [isCardDelete, setIsCardDelete] = React.useState(false)
 
   return (
     <div className="app">
@@ -25,10 +26,18 @@ function App() {
           <Main onIsHeaderMain={setIsHeaderMain}/>
         </Route>
         <Route path="/movies">
-          <Movies onLoggedIn={setLoggedIn}/>
+          <Movies
+            onLoggedIn={setLoggedIn}
+            isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
+          />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies onLoggedIn={setLoggedIn}/>
+          <SavedMovies
+            onLoggedIn={setLoggedIn}
+            isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
+          />
         </Route>
         <Route path="/profile">
           <Profile onLoggedIn={setLoggedIn}/>
