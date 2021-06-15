@@ -3,7 +3,7 @@ import {SectionTitle} from "../SectionTitle/SectionTitle";
 export const Techs = () => {
   return (
     <section className="techs">
-      <SectionTitle title="Технологии"/>
+      <SectionTitle title="Технологии" id="techs"/>
       <div className="techs__content">
         <h2 className="techs__title">7 технологий</h2>
         <p className="techs__subtitle">
