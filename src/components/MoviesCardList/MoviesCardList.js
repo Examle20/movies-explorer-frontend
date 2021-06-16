@@ -8,7 +8,7 @@ export const MoviesCardList = (props) => {
   return (
     <section className="movies-card">
       <ul className="movies-card__list">
-        {allFilms.slice(0,12).map((item) => {
+        {allFilms.slice(0,16).map((item) => {
           return <MoviesCard
             src={item.src}
             title={item.title}

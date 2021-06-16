@@ -1,6 +1,7 @@
 .filter {
   display: flex;
-  margin-top: 42px;
+  align-items: center;
+  margin-top: 41px;
   color: #FFFFFF;
 }
 
