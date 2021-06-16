@@ -6,6 +6,13 @@
   color: #FFFFFF;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .footer {
+    width: 708px;
+    padding: 79px 30px 20px 30px;
+  }
+}
+
 .footer__title {
   color: #8B8B8B;
   font-weight: normal;
@@ -15,6 +22,13 @@
   border-bottom: 1px solid #424242;
   padding-bottom: 20px;
   margin: 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .footer__title {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }
 
 .footer__row {
@@ -52,4 +66,10 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 16px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .footer__link {
+    font-size: 12px;
+  }
 }
