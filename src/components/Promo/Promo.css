@@ -2,19 +2,42 @@
   background-color: #073042;
   width: 1140px;
   display: flex;
-  flex-direction: column;
   padding: 0 70px 75px 70px;
+  justify-content: space-between;
   position: relative;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 320px) and (max-width: 1279px) {
   .promo {
-    width: 768px;
+    width: 100%;
     padding: 0 0 76px 0;
+    flex-direction: column-reverse;
     align-items: center;
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+  .promo {
+    padding: 0 0 30px 0;
+  }
+}
+
+.promo__container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+  .promo__container {
+    align-items: center;
+  }
+}
+
+/*@media screen and (min-width: 320px) and (max-width: 767px) {*/
+/*  .promo__container {*/
+/*    align-items: center;*/
+/*  }*/
+/*}*/
 
 .promo__title {
   color: #FFFFFF;
@@ -31,7 +54,23 @@
     font-size: 40px;
     line-height: 50px;
     text-align: center;
-    margin-top: 492px;
+    margin-top: 48px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .promo__title {
+    max-width: 300px;
+    font-size: 30px;
+    line-height: 38px;
+    text-align: center;
+    margin-top: 48px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .promo__title {
+    margin-top: 44px;
   }
 }
 
@@ -49,6 +88,13 @@
   .promo__text {
     text-align: center;
     margin-top: 22px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .promo__text {
+    text-align: center;
+    margin-top: 24px;
     max-width: 260px;
   }
 }
@@ -75,19 +121,31 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .promo__link {
+    margin-top: 80px;
+  }
+}
+
 .promo__image {
   width: 310px;
   height: 304px;
   background-image: url(../../images/promo-img.svg);
   background-size: contain;
-  position: absolute;
-  right: 70px;
-  top: 75px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 75px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .promo__image {
-    top: 140px;
-    left: 229px;
+    margin-top: 142px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+  .promo__image {
+    width: 210px;
+    height: 206px;
   }
 }

@@ -12,11 +12,26 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project {
+    width: 284px;
+    padding: 70px 18px 93px 18px;
+  }
+}
+
 .about-project__group {
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin: 70px 0 0 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__group {
+    width: 284px;
+    margin-top: 60px;
+    flex-direction: column;
+  }
 }
 
 .about-project__text {
@@ -30,12 +45,31 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__text {
+    max-width: 284px;
+    margin-top: 56px;
+  }
+
+  .about-project__text:first-of-type {
+    margin-top: 0;
+  }
+}
+
 .about-project__text-title {
   margin: 0;
   font-weight: normal;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__text-title {
+    max-width: 284px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .about-project__text-paragraph {
@@ -53,6 +87,15 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__text-paragraph {
+    margin-top: 16px;
+    font-size: 11px;
+    line-height: 16px;
+    max-width: 284px;
+  }
+}
+
 .about-project__time-line {
   display: flex;
   margin: 110px 0 0 0;
@@ -61,6 +104,12 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project__time-line {
     margin-top: 93px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__time-line {
+    margin-top: 60px;
   }
 }
 
@@ -89,6 +138,14 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__progress-bar {
+    width: 184px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
 .about-project__progress-bar_backend {
   width: 228px;
   background-color: #3DDC84;
@@ -101,10 +158,23 @@
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__progress-bar_backend {
+    width: 100px;
+  }
+}
+
 .about-project__subtitle {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   color: #8B8B8B;
   margin: 14px 0 0 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__subtitle {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }
