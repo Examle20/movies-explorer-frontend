@@ -47,6 +47,7 @@
   font-style: normal;
   line-height: 58px;
   margin: 75px 0 0 0;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -147,5 +148,6 @@
   .promo__image {
     width: 210px;
     height: 206px;
+    margin-top: 70px;
   }
 }

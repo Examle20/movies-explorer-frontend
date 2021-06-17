@@ -15,7 +15,7 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project {
     width: 284px;
-    padding: 70px 18px 93px 18px;
+    padding: 70px 18px 70px 18px;
   }
 }
 
@@ -176,5 +176,6 @@
   .about-project__subtitle {
     font-size: 11px;
     line-height: 13px;
+    margin-top: 10px;
   }
 }

@@ -70,6 +70,8 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .footer__author {
     margin-top: 30px;
+    font-size: 12px;
+    line-height: 15px;
   }
 }
 
@@ -93,7 +95,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .footer__links-item {
-    margin: 12px 0 0 0;
+    margin: 8px 0 0 0;
   }
 }
 
