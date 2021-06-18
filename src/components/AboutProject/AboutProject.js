@@ -20,7 +20,7 @@ export const AboutProject = () => {
         </div>
       </article>
       <div className="about-project__time-line">
-        <div className="about-project__progress-part">
+        <div className="about-project__progress-part about-project__progress-part_backend">
           <div className="about-project__progress-bar about-project__progress-bar_backend">1 неделя</div>
           <p className="about-project__subtitle">Back-end</p>
         </div>

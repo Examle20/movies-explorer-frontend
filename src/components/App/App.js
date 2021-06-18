@@ -10,6 +10,7 @@ import {Login} from "../Login/Login";
 import {NotFound} from "../NotFound/NotFound";
 import { Route, Switch } from 'react-router-dom';
 import React from "react";
+import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 
 function App() {
 
@@ -17,10 +18,16 @@ function App() {
   const [isHeaderMain, setIsHeaderMain] = React.useState(false)
   const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true)
   const [isCardDelete, setIsCardDelete] = React.useState(false)
+  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
 
   return (
     <div className="app">
-      {isHeaderAndFooter && <Header loggedIn={loggedIn} isHeaderMain={isHeaderMain}/>}
+      {isHeaderAndFooter &&
+      <Header
+        loggedIn={loggedIn}
+        isHeaderMain={isHeaderMain}
+        onNavigationMenu={setIsNavigationMenuOpen}
+      />}
       <Switch>
         <Route exact path="/">
           <Main onIsHeaderMain={setIsHeaderMain}/>
@@ -51,6 +58,10 @@ function App() {
         </Route>
       </Switch>
       {isHeaderAndFooter && <Footer/>}
+      <NavigationMenu
+        isNavigationMenuOpen={isNavigationMenuOpen}
+        onNavigationMenu={setIsNavigationMenuOpen}
+      />
     </div>
   );
 }

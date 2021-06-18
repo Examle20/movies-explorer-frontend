@@ -3,7 +3,6 @@
   height: 100%;
   background-color: #202020;
   display: flex;
-  align-items: center;
   flex-direction: column;
   font-family: 'Inter', Arial, sans-serif, Helvetica;
 }

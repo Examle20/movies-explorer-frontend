@@ -15,12 +15,12 @@ export const Main = (props) => {
   }, [])
 
   return (
-    <>
+    <main>
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe/>
       <Portfolio/>
-    </>
+    </main>
   );
 }

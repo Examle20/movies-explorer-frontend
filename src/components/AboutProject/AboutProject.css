@@ -3,18 +3,19 @@
   flex-direction: column;
   width: 1140px;
   padding: 110px 70px 110px 70px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project {
-    width: 668px;
+    width: calc(100% - 100px);
     padding: 90px 50px 90px 50px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project {
-    width: 284px;
+    width: calc(100% - 28px);
     padding: 70px 18px 70px 18px;
   }
 }
@@ -28,7 +29,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project__group {
-    width: 284px;
+    width: 100%;
     margin-top: 60px;
     flex-direction: column;
   }
@@ -41,13 +42,13 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project__text {
-    max-width: 319px;
+    max-width: calc(50% - 15px);
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project__text {
-    max-width: 284px;
+    max-width: 100%;
     margin-top: 56px;
   }
 
@@ -66,7 +67,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project__text-title {
-    max-width: 284px;
+    width: 100%;
     font-size: 18px;
     line-height: 22px;
   }
@@ -92,18 +93,19 @@
     margin-top: 16px;
     font-size: 11px;
     line-height: 16px;
-    max-width: 284px;
+    max-width: 100%;
   }
 }
 
 .about-project__time-line {
   display: flex;
+  width: 100%;
   margin: 110px 0 0 0;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project__time-line {
-    margin-top: 93px;
+    margin: 93px auto 0 auto;
   }
 }
 
@@ -118,6 +120,36 @@
   align-items: center;
   flex-direction: column;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .about-project__progress-part {
+    width: calc(100% - 140px);
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__progress-part {
+    width: calc(100% - 100px);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .about-project__progress-part_backend {
+    width: calc(100% - 528px);
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about-project__progress-part_backend {
+    width: calc(100% - 184px);
+  }
+}
+
+/*@media screen and (min-width: 320px) and (max-width: 767px) {*/
+/*  .about-project__progress-part {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
 
 .about-project__progress-bar {
   color: #FFFFFF;
@@ -134,13 +166,13 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project__progress-bar {
-    width: 528px;
+    width: 100%;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project__progress-bar {
-    width: 184px;
+    width: 100%;
     font-size: 11px;
     line-height: 13px;
   }
@@ -154,13 +186,13 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .about-project__progress-bar_backend {
-    width: 140px;
+    width: 100%;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .about-project__progress-bar_backend {
-    width: 100px;
+    width: 100%;
   }
 }
 

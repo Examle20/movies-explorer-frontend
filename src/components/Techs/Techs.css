@@ -5,18 +5,19 @@
   padding: 100px 70px 100px 70px;
   background-color: #272727;
   color: #FFFFFF;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .techs {
-    width: 668px;
+    width: calc(100% - 100px);
     padding: 90px 50px 90px 50px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .techs {
-    width: 284px;
+    width: calc(100% - 28px);
     padding: 70px 18px 70px 18px;
   }
 }

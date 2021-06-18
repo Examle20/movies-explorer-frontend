@@ -2,6 +2,7 @@ import "./Movies.css"
 import {SearchForm} from "../SearchForm/SearchForm";
 import {MoviesCardList} from "../MoviesCardList/MoviesCardList";
 import React from "react";
+import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 
 export const Movies = (props) => {
 
@@ -18,6 +19,7 @@ export const Movies = (props) => {
     <div className="movies">
       <SearchForm/>
       <MoviesCardList isCardDelete={props.isCardDelete}/>
+      <NavigationMenu />
     </div>
   );
 }

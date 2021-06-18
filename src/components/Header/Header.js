@@ -7,7 +7,10 @@ export const Header = (props) => {
     <header className={`header ${props.isHeaderMain && "header_main"}`}>
       <div className="header__container">
         <Link to="/" className='header__logo'/>
-        <Navigation loggedIn={props.loggedIn}/>
+        <Navigation
+          loggedIn={props.loggedIn}
+          onNavigationMenu={props.onNavigationMenu}
+        />
       </div>
     </header>
   );
