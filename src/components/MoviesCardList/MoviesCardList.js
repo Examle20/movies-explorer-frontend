@@ -8,7 +8,7 @@ export const MoviesCardList = (props) => {
   return (
     <section className="movies-card">
       <ul className="movies-card__list">
-        {allFilms.slice(0,5).map((item) => {
+        {allFilms.slice(0,2).map((item) => {
           return <MoviesCard
             src={item.src}
             title={item.title}
@@ -16,7 +16,7 @@ export const MoviesCardList = (props) => {
             isCardDelete={props.isCardDelete}/>
         })}
       </ul>
-      <button className="movies-card__button-more">Ещё</button>
+      <button className="movies-card__button-more movies-card__button-more_hidden">Ещё</button>
     </section>
   );
 }

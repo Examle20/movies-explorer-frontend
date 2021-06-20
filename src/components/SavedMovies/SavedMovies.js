@@ -3,6 +3,7 @@ import {MoviesCard} from "../MoviesCard/MoviesCard";
 import React from "react";
 import {SearchForm} from "../SearchForm/SearchForm";
 import {MoviesCardList} from "../MoviesCardList/MoviesCardList";
+import "./SavedMovies.css"
 
 export const SavedMovies = (props) => {
   React.useEffect(() => {
@@ -13,9 +14,9 @@ export const SavedMovies = (props) => {
     }
   })
   return (
-    <>
+    <div className="saved-movies">
       <SearchForm/>
       <MoviesCardList isCardDelete={props.isCardDelete}/>
-    </>
+    </div>
   );
 }
