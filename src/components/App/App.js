@@ -22,47 +22,47 @@ function App() {
 
   return (
     <div className="app">
-      {/*{isHeaderAndFooter &&*/}
-      {/*<Header*/}
-      {/*  loggedIn={loggedIn}*/}
-      {/*  isHeaderMain={isHeaderMain}*/}
-      {/*  onNavigationMenu={setIsNavigationMenuOpen}*/}
-      {/*/>}*/}
-      {/*<Switch>*/}
-      {/*  <Route exact path="/">*/}
-      {/*    <Main onIsHeaderMain={setIsHeaderMain}/>*/}
-      {/*  </Route>*/}
-      {/*  <Route path="/movies">*/}
-      {/*    <Movies*/}
-      {/*      onLoggedIn={setLoggedIn}*/}
-      {/*      isCardDelete={isCardDelete}*/}
-      {/*      onIsCardDelete={setIsCardDelete}*/}
-      {/*    />*/}
-      {/*  </Route>*/}
-      {/*  <Route path="/saved-movies">*/}
-      {/*    <SavedMovies*/}
-      {/*      onLoggedIn={setLoggedIn}*/}
-      {/*      isCardDelete={isCardDelete}*/}
-      {/*      onIsCardDelete={setIsCardDelete}*/}
-      {/*    />*/}
-      {/*  </Route>*/}
-      {/*  <Route path="/profile">*/}
-      {/*    <Profile onLoggedIn={setLoggedIn}/>*/}
-      {/*  </Route>*/}
+      {isHeaderAndFooter &&
+      <Header
+        loggedIn={loggedIn}
+        isHeaderMain={isHeaderMain}
+        onNavigationMenu={setIsNavigationMenuOpen}
+      />}
+      <Switch>
+        <Route exact path="/">
+          <Main onIsHeaderMain={setIsHeaderMain}/>
+        </Route>
+        <Route path="/movies">
+          <Movies
+            onLoggedIn={setLoggedIn}
+            isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
+          />
+        </Route>
+        <Route path="/saved-movies">
+          <SavedMovies
+            onLoggedIn={setLoggedIn}
+            isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
+          />
+        </Route>
+        <Route path="/profile">
+          <Profile onLoggedIn={setLoggedIn}/>
+        </Route>
 
-      {/*  <Route path="/signin">*/}
-      {/*    <Login onHeaderAndFooter={setIsHeaderAndFooter}/>*/}
-      {/*  </Route>*/}
-      {/*  <Route path="/signup">*/}
-      {/*    <Register onHeaderAndFooter={setIsHeaderAndFooter}/>*/}
-      {/*  </Route>*/}
-      {/*</Switch>*/}
-      {/*{isHeaderAndFooter && <Footer/>}*/}
-      {/*<NavigationMenu*/}
-      {/*  isNavigationMenuOpen={isNavigationMenuOpen}*/}
-      {/*  onNavigationMenu={setIsNavigationMenuOpen}*/}
-      {/*/>*/}
-      <NotFound/>
+        <Route path="/signin">
+          <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
+        </Route>
+        <Route path="/signup">
+          <Register onHeaderAndFooter={setIsHeaderAndFooter}/>
+        </Route>
+      </Switch>
+      {isHeaderAndFooter && <Footer/>}
+      <NavigationMenu
+        isNavigationMenuOpen={isNavigationMenuOpen}
+        onNavigationMenu={setIsNavigationMenuOpen}
+      />
+      {/*<NotFound/>*/}
     </div>
   );
 }

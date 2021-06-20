@@ -2,9 +2,6 @@ import "./Navigation.css"
 import { Link } from 'react-router-dom';
 export const Navigation = (props) => {
   return (
-
-
-
     <nav className="navigation">
       {props.loggedIn &&
         <div className="navigation__authorization-group">
