@@ -14,7 +14,7 @@ export const NavigationMenu = (props) => {
           <nav className="navigation-menu__links">
             <Link to="/" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Главная</Link>
             <Link to="movies" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Фильмы</Link>
-            <Link to="" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Сохраненные фильмы</Link>
+            <Link to="saved-movies" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Сохраненные фильмы</Link>
             <div className="navigation-menu__links-container">
               <Link to="profile"
                     className="navigation-menu__link-item navigation-menu__link-item_account">Аккаунт</Link>

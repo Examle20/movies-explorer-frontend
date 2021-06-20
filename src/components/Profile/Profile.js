@@ -6,9 +6,10 @@ export const Profile = (props) => {
 
   React.useEffect(() => {
     props.onLoggedIn(true)
-
+    props.onIsFooterOpen(false)
     return () => {
       props.onLoggedIn(false)
+      props.onIsFooterOpen(true)
     }
   })
 

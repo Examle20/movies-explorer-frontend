@@ -19,6 +19,7 @@ function App() {
   const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true)
   const [isCardDelete, setIsCardDelete] = React.useState(false)
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
+  const [isFooterOpen, setIsFooterOpen] = React.useState(true)
 
   return (
     <div className="app">
@@ -47,22 +48,23 @@ function App() {
           />
         </Route>
         <Route path="/profile">
-          <Profile onLoggedIn={setLoggedIn}/>
+          <Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>
         </Route>
-
         <Route path="/signin">
           <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
         <Route path="/signup">
           <Register onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
+        <Route path="*">
+          <NotFound onIsHeaderAndFooter={setIsHeaderAndFooter}/>
+        </Route>
       </Switch>
-      {isHeaderAndFooter && <Footer/>}
+      {isHeaderAndFooter && isFooterOpen && <Footer/>}
       <NavigationMenu
         isNavigationMenuOpen={isNavigationMenuOpen}
         onNavigationMenu={setIsNavigationMenuOpen}
       />
-      {/*<NotFound/>*/}
     </div>
   );
 }
