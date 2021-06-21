@@ -18,7 +18,7 @@ export const Movies = (props) => {
   return (
     <div className="movies">
       <SearchForm/>
-      <MoviesCardList isCardDelete={props.isCardDelete}/>
+      <MoviesCardList isCardDelete={props.isCardDelete} amount={12}/>
       <NavigationMenu />
     </div>
   );

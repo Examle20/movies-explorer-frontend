@@ -6,20 +6,12 @@ export const Input = (props) => {
   return (
     <div className="input">
       <input
-        // id={`${props.name}-input`}
         type={props.type}
         className={props.className}
         autoComplete="off"
-        // name={props.name}
-        // placeholder={props.placeholder}
-        // minLength={props.minLength}
-        // maxLength={props.maxLength}
-        // required
-        // autoComplete="off"
-        // value={props.value}
-        // onChange={handleChange}
-        // onPaste={handleChange}
-        // contentEditable={true}
+        minLength={props.minLength}
+        maxLength={props.maxLength}
+        required
       />
       <span className="input__error">
         {errorMessage}

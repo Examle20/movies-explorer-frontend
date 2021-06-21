@@ -16,7 +16,7 @@ export const SavedMovies = (props) => {
   return (
     <div className="saved-movies">
       <SearchForm/>
-      <MoviesCardList isCardDelete={props.isCardDelete}/>
+      <MoviesCardList isCardDelete={props.isCardDelete} amount={3}/>
     </div>
   );
 }

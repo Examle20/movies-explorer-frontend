@@ -7,7 +7,7 @@ export const MoviesCard = (props) => {
       />
       <div className="movies-card__item-group">
         <h2 className="movies-card__item-title">{props.title}</h2>
-        {!props.isCardDelete && <button className="movies-card__item-button"/>}
+        {!props.isCardDelete && <button className={`movies-card__item-button ${props.isLiked && "movies-card__item-button_save"}`}/>}
         {props.isCardDelete && <button className="movies-card__item-button movies-card__item-button_delete"/>}
       </div>
       <p className="movies-card__item-time">{props.time}</p>

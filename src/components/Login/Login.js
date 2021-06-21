@@ -16,11 +16,21 @@ export const Login = (props) => {
         children={(
           <>
             <div className="entry-form__form-item">
-              <Input type="email" className="entry-form__form-input"/>
+              <Input
+                type="email"
+                className="entry-form__form-input"
+                minLength="2"
+                maxLength="30"
+              />
               <label className="entry-form__form-label">E-mail</label>
             </div>
             <div className="entry-form__form-item">
-              <Input type="password" className="entry-form__form-input"/>
+              <Input
+                type="password"
+                className="entry-form__form-input"
+                minLength="2"
+                maxLength="30"
+              />
               <label className="entry-form__form-label">Пароль</label>
             </div>
           </>

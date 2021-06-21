@@ -1,5 +1,6 @@
 import "./NavigationMenu.css"
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
 export const NavigationMenu = (props) => {
 
   const closeNavigationMenu = () => {
@@ -7,18 +8,19 @@ export const NavigationMenu = (props) => {
   }
 
   return (
-    <>{ props.isNavigationMenuOpen &&
+    <>
+      { props.isNavigationMenuOpen &&
       <div className="navigation-menu">
         <div className="navigation-menu__container">
           <button className="navigation-menu__button-close" onClick={closeNavigationMenu}/>
           <nav className="navigation-menu__links">
-            <Link to="/" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Главная</Link>
-            <Link to="movies" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Фильмы</Link>
-            <Link to="saved-movies" className="navigation-menu__link-item" activeClassName="navigation-menu__link-item_active">Сохраненные фильмы</Link>
+            <NavLink to="/" className="navigation-menu__link-item" exact activeClassName="navigation-menu__link-item_active">Главная</NavLink>
+            <NavLink to="/movies" className="navigation-menu__link-item" exact activeClassName="navigation-menu__link-item_active">Фильмы</NavLink>
+            <NavLink to="/saved-movies" className="navigation-menu__link-item" exact activeClassName="navigation-menu__link-item_active">Сохраненные фильмы</NavLink>
             <div className="navigation-menu__links-container">
-              <Link to="profile"
+              <Link to="/profile"
                     className="navigation-menu__link-item navigation-menu__link-item_account">Аккаунт</Link>
-              <Link to="profile" className="navigation-menu__image-account"/>
+              <Link to="/profile" className="navigation-menu__image-account"/>
             </div>
           </nav>
         </div>

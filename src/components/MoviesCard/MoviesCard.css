@@ -72,6 +72,10 @@
   background-position: center;
 }
 
+.movies-card__item-button_save {
+  background-image: url("../../images/button-save.svg");
+}
+
 .movies-card__item-button_delete {
   background-image: url("../../images/delete-card.svg");
 }
