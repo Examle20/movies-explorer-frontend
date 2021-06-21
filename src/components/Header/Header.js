@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import {Navigation} from "../Navigation/Navigation";
+import "./Header.css"
 
 export const Header = (props) => {
   return (

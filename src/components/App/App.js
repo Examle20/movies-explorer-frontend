@@ -11,6 +11,7 @@ import {NotFound} from "../NotFound/NotFound";
 import { Route, Switch } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
+import "./App.css"
 
 function App() {
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-import {Header} from "../Header/Header";
+import "./Promo.css"
 
 export const Promo = () => {
   return (

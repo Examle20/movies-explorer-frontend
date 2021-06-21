@@ -1,4 +1,5 @@
 import {SectionTitle} from "../SectionTitle/SectionTitle";
+import "./Techs.css"
 
 export const Techs = () => {
   return (

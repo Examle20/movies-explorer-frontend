@@ -1,3 +1,4 @@
+import "./SectionTitle.css"
 
 export const SectionTitle = (props) => {
   return (

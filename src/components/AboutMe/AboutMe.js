@@ -1,4 +1,5 @@
 import {SectionTitle} from "../SectionTitle/SectionTitle";
+import "./AboutMe.css";
 
 export const AboutMe = () => {
   return (

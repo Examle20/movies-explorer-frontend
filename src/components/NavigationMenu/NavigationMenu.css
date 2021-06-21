@@ -14,6 +14,12 @@
   visibility: visible;
 }
 
+@media screen and (min-width: 1280px) {
+  .navigation-menu {
+    visibility: hidden;
+  }
+}
+
 .navigation-menu__container {
   width: 520px;
   background-color: #202020;
