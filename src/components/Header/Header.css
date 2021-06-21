@@ -50,6 +50,11 @@
   background-repeat: no-repeat;
 }
 
+.header__logo:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
 .header_main{
   background-color: #073042;
 }

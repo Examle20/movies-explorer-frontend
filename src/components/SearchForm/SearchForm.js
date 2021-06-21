@@ -5,7 +5,7 @@ export const SearchForm = () => {
   return (
     <section className="search-form">
       <form action="" className="search-form__form">
-        <input type="text" className="search-form__input" placeholder="Фильм"/>
+        <input type="text" className="search-form__input" placeholder="Фильм" required/>
         <button  className="search-form__button"/>
         <FilterCheckbox/>
       </form>

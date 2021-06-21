@@ -69,7 +69,13 @@
   background-color: #313131;
   background-image: url("../../images/heart.svg");
   background-repeat: no-repeat;
+  cursor: pointer;
   background-position: center;
+}
+
+.movies-card__item-button:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
 }
 
 .movies-card__item-button_save {

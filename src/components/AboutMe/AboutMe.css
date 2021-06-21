@@ -143,6 +143,11 @@
   line-height: 17px;
 }
 
+.about-me__link:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
 .about-me__links-item {
   margin: 0 0 0 20px;
 }

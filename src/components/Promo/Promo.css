@@ -119,6 +119,11 @@
   margin: 146px 0 0 0;
 }
 
+.promo__link:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .promo__link {
     margin-top: 92px;

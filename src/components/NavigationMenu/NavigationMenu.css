@@ -53,6 +53,11 @@
   padding-bottom: 4px;
 }
 
+.navigation-menu__link-item:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
+}
+
 .navigation-menu__link-item_active {
   border-bottom: 2px solid #FFFFFF;
 }
@@ -89,6 +94,12 @@
   background-repeat: no-repeat;
   background-size: contain;
   align-self: flex-end;
+  cursor: pointer;
+}
+
+.navigation-menu__button-close:hover {
+  opacity: 0.6;
+  transition-duration: 1s;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
