@@ -1,0 +1,13 @@
+.input {
+  position: relative;
+}
+
+.input__error {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
