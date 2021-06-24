@@ -6,7 +6,7 @@ import {SavedMovies} from "../SavedMovies/SavedMovies";
 import {Register} from "../Register/Register";
 import {Login} from "../Login/Login";
 import {NotFound} from "../NotFound/NotFound";
-
+import {CurrentUserContext} from "../../contexts/currentUserContext";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
@@ -24,6 +24,7 @@ function App(props) {
   const [isCardDelete, setIsCardDelete] = React.useState(false)
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
   const [isFooterOpen, setIsFooterOpen] = React.useState(true)
+  const [currentUser, setCurrentUser] = React.useState({});
 
   const handleRegister = (name, email, password) => {
     auth.register(name, email, password)
@@ -75,59 +76,61 @@ function App(props) {
   },[])
 
   return (
-    <div className="app">
-      {isHeaderAndFooter &&
-      <Header
-        loggedIn={loggedIn}
-        isHeaderMain={isHeaderMain}
-        onNavigationMenu={setIsNavigationMenuOpen}
-      />}
-      <Switch>
-        <Route exact path="/">
-          <Main onIsHeaderMain={setIsHeaderMain}/>
-        </Route>
-        <ProtectedRoute
-          component={Movies}
-          path="/movies"
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app">
+        {isHeaderAndFooter &&
+        <Header
           loggedIn={loggedIn}
-        />
-        <ProtectedRoute
-          component={SavedMovies}
-          path="/saved-movies"
-          loggedIn={loggedIn}
-        />
-        <ProtectedRoute
-          component={Profile}
-          path="/profile"
-          loggedIn={loggedIn}
-          onIsFooterOpen={setIsFooterOpen}
-          onSignout={handleSignOut}
-        />
-        {/*<Route path="/profile">*/}
-        {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}
-        {/*</Route>*/}
-        <Route path="/signin">
-          <Login
-            onHeaderAndFooter={setIsHeaderAndFooter}
-            onLogin={handleLogin}
+          isHeaderMain={isHeaderMain}
+          onNavigationMenu={setIsNavigationMenuOpen}
+        />}
+        <Switch>
+          <Route exact path="/">
+            <Main onIsHeaderMain={setIsHeaderMain}/>
+          </Route>
+          <ProtectedRoute
+            component={Movies}
+            path="/movies"
+            loggedIn={loggedIn}
           />
-        </Route>
-        <Route path="/signup">
-          <Register
-            onHeaderAndFooter={setIsHeaderAndFooter}
-            onRegister={handleRegister}
+          <ProtectedRoute
+            component={SavedMovies}
+            path="/saved-movies"
+            loggedIn={loggedIn}
           />
-        </Route>
-        <Route path="*">
-          <NotFound onIsHeaderAndFooter={setIsHeaderAndFooter}/>
-        </Route>
-      </Switch>
-      {isHeaderAndFooter && isFooterOpen && <Footer/>}
-      <NavigationMenu
-        isNavigationMenuOpen={isNavigationMenuOpen}
-        onNavigationMenu={setIsNavigationMenuOpen}
-      />
-    </div>
+          <ProtectedRoute
+            component={Profile}
+            path="/profile"
+            loggedIn={loggedIn}
+            onIsFooterOpen={setIsFooterOpen}
+            onSignout={handleSignOut}
+          />
+          {/*<Route path="/profile">*/}
+          {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}
+          {/*</Route>*/}
+          <Route path="/signin">
+            <Login
+              onHeaderAndFooter={setIsHeaderAndFooter}
+              onLogin={handleLogin}
+            />
+          </Route>
+          <Route path="/signup">
+            <Register
+              onHeaderAndFooter={setIsHeaderAndFooter}
+              onRegister={handleRegister}
+            />
+          </Route>
+          <Route path="*">
+            <NotFound onIsHeaderAndFooter={setIsHeaderAndFooter}/>
+          </Route>
+        </Switch>
+        {isHeaderAndFooter && isFooterOpen && <Footer/>}
+        <NavigationMenu
+          isNavigationMenuOpen={isNavigationMenuOpen}
+          onNavigationMenu={setIsNavigationMenuOpen}
+        />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
