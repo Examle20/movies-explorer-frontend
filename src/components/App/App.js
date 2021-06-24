@@ -3,19 +3,18 @@ import {Main} from "../Main/Main";
 import {Footer} from "../Footer/Footer";
 import {Movies} from "../Movies/Movies";
 import {SavedMovies} from "../SavedMovies/SavedMovies";
-import {Profile} from "../Profile/Profile";
-import {EntryForm} from "../EntryForm/EntryForm";
 import {Register} from "../Register/Register";
 import {Login} from "../Login/Login";
 import {NotFound} from "../NotFound/NotFound";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
 import Preloader from "../Preloader/Preloader";
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
+import * as auth from "../../utils/MainApi"
 
-function App() {
+function App(props) {
 
   const [loggedIn, setLoggedIn] = React.useState(false)
   const [isHeaderMain, setIsHeaderMain] = React.useState(false)
@@ -23,6 +22,16 @@ function App() {
   const [isCardDelete, setIsCardDelete] = React.useState(false)
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
   const [isFooterOpen, setIsFooterOpen] = React.useState(true)
+
+  const handleRegister = (name, email, password) => {
+    auth.register(name, email, password)
+      .then((res) => {
+        props.history.push('/signin');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className="app">
@@ -41,25 +50,11 @@ function App() {
           path="/movies"
           loggedIn={loggedIn}
         />
-        {/*<Route path="/movies">*/}
-        {/*  <Movies*/}
-        {/*    onLoggedIn={setLoggedIn}*/}
-        {/*    isCardDelete={isCardDelete}*/}
-        {/*    onIsCardDelete={setIsCardDelete}*/}
-        {/*  />*/}
-        {/*</Route>*/}
         <ProtectedRoute
           component={SavedMovies}
           path="/saved-movies"
           loggedIn={loggedIn}
         />
-        {/*<Route path="/saved-movies">*/}
-        {/*  <SavedMovies*/}
-        {/*    onLoggedIn={setLoggedIn}*/}
-        {/*    isCardDelete={isCardDelete}*/}
-        {/*    onIsCardDelete={setIsCardDelete}*/}
-        {/*  />*/}
-        {/*</Route>*/}
         <ProtectedRoute
           component={SavedMovies}
           path="/profile"
@@ -72,7 +67,10 @@ function App() {
           <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
         <Route path="/signup">
-          <Register onHeaderAndFooter={setIsHeaderAndFooter}/>
+          <Register
+            onHeaderAndFooter={setIsHeaderAndFooter}
+            onRegister={handleRegister}
+          />
         </Route>
         <Route path="*">
           <NotFound onIsHeaderAndFooter={setIsHeaderAndFooter}/>
@@ -87,4 +85,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

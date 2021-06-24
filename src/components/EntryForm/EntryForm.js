@@ -27,7 +27,11 @@ export const EntryForm = (props) => {
       <h1 className="entry-form__title">{props.title}</h1>
       <form ref={formRef} action="" className="entry-form__form" >
         {props.children}
-        <button type="submit" disabled={buttonDisabled} className={buttonClassName}>{props.button}</button>
+        <button
+          type="submit"
+          disabled={buttonDisabled}
+          className={buttonClassName}
+          onClick={props.onHandleButton}>{props.button}</button>
       </form>
       <p className="entry-form__switch">{props.switch}<Link to={props.to} className="entry-form__switch-link">{props.link}</Link></p>
     </div>
