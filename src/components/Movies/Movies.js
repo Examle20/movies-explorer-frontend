@@ -7,12 +7,7 @@ import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 export const Movies = (props) => {
 
   React.useEffect(() => {
-    props.onLoggedIn(true);
     props.onIsCardDelete(false);
-
-    return () => {
-      props.onLoggedIn(false)
-    }
   })
 
   return (

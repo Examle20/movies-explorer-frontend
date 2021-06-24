@@ -12,6 +12,8 @@ import { Route, Switch } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
+import Preloader from "../Preloader/Preloader";
+import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
 
@@ -34,23 +36,38 @@ function App() {
         <Route exact path="/">
           <Main onIsHeaderMain={setIsHeaderMain}/>
         </Route>
-        <Route path="/movies">
-          <Movies
-            onLoggedIn={setLoggedIn}
-            isCardDelete={isCardDelete}
-            onIsCardDelete={setIsCardDelete}
-          />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies
-            onLoggedIn={setLoggedIn}
-            isCardDelete={isCardDelete}
-            onIsCardDelete={setIsCardDelete}
-          />
-        </Route>
-        <Route path="/profile">
-          <Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>
-        </Route>
+        <ProtectedRoute
+          component={Movies}
+          path="/movies"
+          loggedIn={loggedIn}
+        />
+        {/*<Route path="/movies">*/}
+        {/*  <Movies*/}
+        {/*    onLoggedIn={setLoggedIn}*/}
+        {/*    isCardDelete={isCardDelete}*/}
+        {/*    onIsCardDelete={setIsCardDelete}*/}
+        {/*  />*/}
+        {/*</Route>*/}
+        <ProtectedRoute
+          component={SavedMovies}
+          path="/saved-movies"
+          loggedIn={loggedIn}
+        />
+        {/*<Route path="/saved-movies">*/}
+        {/*  <SavedMovies*/}
+        {/*    onLoggedIn={setLoggedIn}*/}
+        {/*    isCardDelete={isCardDelete}*/}
+        {/*    onIsCardDelete={setIsCardDelete}*/}
+        {/*  />*/}
+        {/*</Route>*/}
+        <ProtectedRoute
+          component={SavedMovies}
+          path="/profile"
+          loggedIn={loggedIn}
+        />
+        {/*<Route path="/profile">*/}
+        {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}
+        {/*</Route>*/}
         <Route path="/signin">
           <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
         </Route>
