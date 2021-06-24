@@ -59,6 +59,17 @@ function App(props) {
       });
   }
 
+  const handleSignOut = () => {
+    auth.signOut()
+      .then(() => {
+        setLoggedIn(false);
+        localStorage.removeItem('authorize')
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+
   React.useEffect(() => {
     if(localStorage.getItem('authorize')) handleTokenCheck();
   },[])
@@ -90,6 +101,7 @@ function App(props) {
           path="/profile"
           loggedIn={loggedIn}
           onIsFooterOpen={setIsFooterOpen}
+          onSignout={handleSignOut}
         />
         {/*<Route path="/profile">*/}
         {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}

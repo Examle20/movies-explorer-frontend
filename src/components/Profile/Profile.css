@@ -118,12 +118,14 @@
 }
 
 .profile__link-out {
-  text-decoration: none;
   color: #EE3465;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   margin-top: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .profile__link-out:hover {

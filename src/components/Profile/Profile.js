@@ -37,7 +37,7 @@ export const Profile = (props) => {
         </div>
         <button className="profile__form-button">Редактировать</button>
       </form>
-      <Link to="/signin" className="profile__link-out">Выйти из аккаунта</Link>
+      <button className="profile__link-out" onClick={props.onSignout}>Выйти из аккаунта</button>
     </div>
   );
 }

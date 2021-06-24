@@ -49,3 +49,18 @@ export const checkToken = () => {
       }
     })
 };
+
+export const signOut = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: 'POST',
+    credentials:'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok){
+        return Promise.reject(res.status)
+      }
+    })
+}
