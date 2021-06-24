@@ -47,6 +47,22 @@ function App(props) {
       })
   }
 
+  const handleTokenCheck = () => {
+    auth.checkToken().then((res) => {
+      if (res){
+        setLoggedIn(true)
+        props.history.push('/movies')
+      }
+    })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  React.useEffect(() => {
+    if(localStorage.getItem('authorize')) handleTokenCheck();
+  },[])
+
   return (
     <div className="app">
       {isHeaderAndFooter &&
