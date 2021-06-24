@@ -13,7 +13,8 @@ import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
 import Preloader from "../Preloader/Preloader";
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
-import * as mainApi from "../../utils/MainApi"
+import * as mainApi from "../../utils/MainApi";
+import * as moviesApi from "../../utils/MoviesApi";
 import {Profile} from "../Profile/Profile";
 
 function App(props) {
@@ -25,6 +26,7 @@ function App(props) {
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
   const [isFooterOpen, setIsFooterOpen] = React.useState(true)
   const [currentUser, setCurrentUser] = React.useState({});
+  const [movies, setMovies] = React.useState([])
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -112,6 +114,8 @@ function App(props) {
             component={Movies}
             path="/movies"
             loggedIn={loggedIn}
+            onSetMovies={setMovies}
+            movies={movies}
           />
           <ProtectedRoute
             component={SavedMovies}
