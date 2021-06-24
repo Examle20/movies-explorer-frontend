@@ -13,7 +13,7 @@ import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
 import Preloader from "../Preloader/Preloader";
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
-import * as auth from "../../utils/MainApi"
+import * as mainApi from "../../utils/MainApi"
 import {Profile} from "../Profile/Profile";
 
 function App(props) {
@@ -27,7 +27,7 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const handleRegister = (name, email, password) => {
-    auth.register(name, email, password)
+    mainApi.register(name, email, password)
       .then((res) => {
         props.history.push('/signin');
       })
@@ -37,7 +37,7 @@ function App(props) {
   }
 
   const handleLogin = (email, password) => {
-    auth.authorize(email, password)
+    mainApi.authorize(email, password)
       .then((res) => {
         setLoggedIn(true);
         props.history.push('/movies');
@@ -49,7 +49,7 @@ function App(props) {
   }
 
   const handleTokenCheck = () => {
-    auth.checkToken().then((res) => {
+    mainApi.checkToken().then((res) => {
       if (res){
         setLoggedIn(true)
         props.history.push('/movies')
@@ -61,7 +61,7 @@ function App(props) {
   }
 
   const handleSignOut = () => {
-    auth.signOut()
+    mainApi.signOut()
       .then(() => {
         setLoggedIn(false);
         localStorage.removeItem('authorize')
@@ -70,6 +70,26 @@ function App(props) {
         console.log(err)
       });
   }
+
+  const handleUpdateUser = (name, email) => {
+    mainApi.editUserInfo(name, email)
+      .then((res) => {
+        setCurrentUser(res)
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      mainApi.getUser()
+        .then((res) => {
+          setCurrentUser(res);
+        })
+        .catch(err => console.log(err))
+    }
+  }, [loggedIn])
 
   React.useEffect(() => {
     if(localStorage.getItem('authorize')) handleTokenCheck();
@@ -104,10 +124,8 @@ function App(props) {
             loggedIn={loggedIn}
             onIsFooterOpen={setIsFooterOpen}
             onSignout={handleSignOut}
+            onUpdateUser={handleUpdateUser}
           />
-          {/*<Route path="/profile">*/}
-          {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}
-          {/*</Route>*/}
           <Route path="/signin">
             <Login
               onHeaderAndFooter={setIsHeaderAndFooter}
