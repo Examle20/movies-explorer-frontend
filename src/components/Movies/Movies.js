@@ -7,7 +7,7 @@ import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 export const Movies = (props) => {
 
   React.useEffect(() => {
-    props.onIsCardDelete(false);
+
   })
 
   return (

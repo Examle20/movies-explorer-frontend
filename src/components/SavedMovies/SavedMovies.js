@@ -7,7 +7,7 @@ import "./SavedMovies.css"
 
 export const SavedMovies = (props) => {
   React.useEffect(() => {
-    props.onIsCardDelete(true)
+
   })
   return (
     <div className="saved-movies">

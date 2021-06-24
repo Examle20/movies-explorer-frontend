@@ -15,6 +15,11 @@ export const Login = (props) => {
     setPassword(e.target.value)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onLogin(email, password);
+  }
+
   return (
     <>
       <EntryForm
@@ -26,6 +31,7 @@ export const Login = (props) => {
         to="signup"
         buttonClass="entry-form__form-button entry-form__form-button_login"
         buttonInactive="entry-form__form-button_inactive"
+        onHandleButton={handleSubmit}
         children={(
           <>
             <div className="entry-form__form-item">

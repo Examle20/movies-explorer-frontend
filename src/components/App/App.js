@@ -6,6 +6,7 @@ import {SavedMovies} from "../SavedMovies/SavedMovies";
 import {Register} from "../Register/Register";
 import {Login} from "../Login/Login";
 import {NotFound} from "../NotFound/NotFound";
+
 import { Route, Switch, withRouter } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
@@ -13,6 +14,7 @@ import "./App.css"
 import Preloader from "../Preloader/Preloader";
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
 import * as auth from "../../utils/MainApi"
+import {Profile} from "../Profile/Profile";
 
 function App(props) {
 
@@ -31,6 +33,18 @@ function App(props) {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  const handleLogin = (email, password) => {
+    auth.authorize(email, password)
+      .then((res) => {
+        setLoggedIn(true);
+        props.history.push('/movies');
+        localStorage.setItem('authorize', 'true');
+      })
+      .catch( err => {
+        console.log(err);
+      })
   }
 
   return (
@@ -56,15 +70,19 @@ function App(props) {
           loggedIn={loggedIn}
         />
         <ProtectedRoute
-          component={SavedMovies}
+          component={Profile}
           path="/profile"
           loggedIn={loggedIn}
+          onIsFooterOpen={setIsFooterOpen}
         />
         {/*<Route path="/profile">*/}
         {/*  /!*<Profile onLoggedIn={setLoggedIn} onIsFooterOpen={setIsFooterOpen}/>*!/*/}
         {/*</Route>*/}
         <Route path="/signin">
-          <Login onHeaderAndFooter={setIsHeaderAndFooter}/>
+          <Login
+            onHeaderAndFooter={setIsHeaderAndFooter}
+            onLogin={handleLogin}
+          />
         </Route>
         <Route path="/signup">
           <Register
