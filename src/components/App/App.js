@@ -27,6 +27,7 @@ function App(props) {
   const [isFooterOpen, setIsFooterOpen] = React.useState(true)
   const [currentUser, setCurrentUser] = React.useState({});
   const [movies, setMovies] = React.useState([])
+  const [savedMovies, setSaveMovies] = React.useState([])
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -83,6 +84,33 @@ function App(props) {
       })
   }
 
+  const handleSaveMovie = (params, like) => {
+    mainApi.saveMovie(params)
+      .then(res => {
+        console.log(res)
+        like();
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleDeleteMovie = (id, dislike) => {
+    mainApi.deleteMovie(id)
+      .then(() => {
+        dislike();
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleGetMovies = () => {
+    mainApi.getMovies()
+      .then((res) => {
+        setSaveMovies(res)
+      })
+      .catch(err => console.log(err))
+  }
+
+
+
   React.useEffect(() => {
     if (loggedIn) {
       mainApi.getUser()
@@ -116,6 +144,11 @@ function App(props) {
             loggedIn={loggedIn}
             onSetMovies={setMovies}
             movies={movies}
+            onSaveMovie={handleSaveMovie}
+            onDeleteMovie={handleDeleteMovie}
+            onCheckMovies={handleGetMovies}
+            savedMovies={savedMovies}
+            isCardDelete={isCardDelete}
           />
           <ProtectedRoute
             component={SavedMovies}

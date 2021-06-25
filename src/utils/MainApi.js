@@ -101,3 +101,68 @@ export const editUserInfo = (name, email) => {
       }
     })
 };
+
+export const saveMovie = (params) => {
+  const image = "https://api.nomoreparties.co" + params.image.url
+  const thumbnail = "https://api.nomoreparties.co" + params.image.formats.thumbnail.url
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'POST',
+    credentials:'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      country: params.country,
+      director: params.director,
+      duration: params.duration,
+      year: params.year,
+      description: params.description,
+      image: image,
+      trailer: params.trailerLink,
+      nameRU: params.nameRU,
+      nameEN: params.nameEN,
+      thumbnail: thumbnail,
+      movieId: params.id
+    })
+  })
+    .then(res => {
+      if (!res.ok){
+        return Promise.reject(res.status)
+      } else {
+        return res.json();
+      }
+    })
+};
+
+export const deleteMovie = (id) => {
+  return fetch(`${BASE_URL}/movies/${id}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok){
+        return Promise.reject(res.status)
+      } else{
+        return res;
+      }
+    })
+}
+
+export const getMovies = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    credentials:'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok){
+        return Promise.reject(res.status)
+      } else {
+        return res.json();
+      }
+    })
+};

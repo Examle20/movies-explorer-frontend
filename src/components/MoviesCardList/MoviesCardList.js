@@ -10,11 +10,11 @@ export const MoviesCardList = (props) => {
         {props.list.slice(0, props.amount).map((item) => {
           return <MoviesCard
              key={item.id}
-             title={item.nameRU}
-             time={item.duration}
+             data={item}
+             savedMovies={props.savedMovies}
              isCardDelete={props.isCardDelete}
-             isLiked={item.isLiked}
-             src={`https://api.nomoreparties.co${item.image.url}`}
+             onButton={props.onButton}
+             onDeleteMovie={props.onDeleteMovie}
            />
         })}
       </ul>

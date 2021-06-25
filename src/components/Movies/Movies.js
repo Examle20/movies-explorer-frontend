@@ -21,6 +21,10 @@ export const Movies = (props) => {
       .catch(err => console.log(err))
   }
 
+  React.useEffect(() => {
+    props.onCheckMovies();
+  },[])
+
   return (
     <div className="movies">
       <SearchForm
@@ -30,10 +34,13 @@ export const Movies = (props) => {
         onGetMovies={getMovies}
       />
       <MoviesCardList
+        onDeleteMovie={props.onDeleteMovie}
         isCardDelete={props.isCardDelete}
         list={props.movies}
         amount={moviesCount}
         onAmount={handleButtonMore}
+        onButton={props.onSaveMovie}
+        savedMovies={props.savedMovies}
       />
       <NavigationMenu />
     </div>
