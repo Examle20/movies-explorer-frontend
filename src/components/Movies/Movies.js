@@ -4,6 +4,7 @@ import {MoviesCardList} from "../MoviesCardList/MoviesCardList";
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import * as moviesApi from "../../utils/MoviesApi";
+
 export const Movies = (props) => {
 
   const [moviesCount, setMoviesCount] = React.useState(4)

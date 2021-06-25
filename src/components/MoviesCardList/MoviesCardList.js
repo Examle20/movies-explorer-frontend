@@ -18,7 +18,7 @@ export const MoviesCardList = (props) => {
            />
         })}
       </ul>
-      <button className={`movies-card__button-more ${props.amount < 4 && "movies-card__button-more_hidden"}`} onClick={props.onAmount}>Ещё</button>
+      <button className={`movies-card__button-more ${(props.amount < 4 || props.amount >= props.list.length) && "movies-card__button-more_hidden"}`} onClick={props.onAmount}>Ещё</button>
     </section>
   );
 }

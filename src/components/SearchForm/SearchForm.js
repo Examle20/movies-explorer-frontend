@@ -12,8 +12,13 @@ export const SearchForm = (props) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    handleMovies.checkFilms(props.storageItem, props.onGetMovies)
-    props.setMovies(handleMovies.searchFilms(props.storageItem,keyWord))
+    handleMovies.checkFilms(props.storageItem, props.onGetMovies);
+    props.setMovies(handleMovies.searchFilms(props.storageItem, keyWord));
+  }
+
+  const handleShortSearch = () => {
+    handleMovies.checkFilms(props.storageItem, props.onGetMovies);
+    props.setMovies(handleMovies.searchShortFilms(props.storageItem));
   }
 
   return (
@@ -21,7 +26,10 @@ export const SearchForm = (props) => {
       <form action="" className="search-form__form" onSubmit={handleSearch}>
         <input value={keyWord || ''} onChange={handleKeyWord} type="text" className="search-form__input" placeholder="Фильм" required/>
         <button type="submit" className="search-form__button"/>
-        <FilterCheckbox/>
+        <FilterCheckbox
+          onSort={handleShortSearch}
+          onMovies={props.setMovies}
+        />
       </form>
     </section>
   );
