@@ -5,10 +5,9 @@ export const MoviesCard = (props) => {
 
   const currentUser = React.useContext(CurrentUserContext)
   const { nameRU, duration, image } = props.data
-  console.log(props.savedMovies)
-  console.log(props.data)
+  const id = props.data.id || props.data.movieId
   const savedMovies = props.savedMovies || []
-  let isLiked = (savedMovies.some(i => (i.movieId === props.data.id) && (i.owner === currentUser.id)));
+  const isLiked = (savedMovies.some(i => (i.movieId === id) && (i.owner === currentUser.id)));
 
   const handleLink = () => {
     if(typeof image === 'string') {
@@ -19,22 +18,9 @@ export const MoviesCard = (props) => {
     }
   }
 
-  const handleDeleteMovie = () => {
-    props.onDeleteMovie(props.data.id);
+  const handleCardButton = () => {
+    props.onMovieButton(props.data)
   }
-
-  const handleLike = (value) => {
-
-  }
-
-  const handleButtonClick = () => {
-    if(!isLiked) {
-      props.onButton(props.data)
-    } else {
-      props.onDeleteMovie(props.data.id)
-    }
-  }
-
 
   return (
     <li className="movies-card__list-item">
@@ -44,9 +30,9 @@ export const MoviesCard = (props) => {
         <h2 className="movies-card__item-title">{nameRU}</h2>
         {!props.isCardDelete &&
           <button className={`movies-card__item-button ${isLiked && "movies-card__item-button_save"}`}
-            onClick={handleButtonClick}
+            onClick={handleCardButton}
           />}
-        {props.isCardDelete && <button className="movies-card__item-button movies-card__item-button_delete" onClick={handleDeleteMovie}/>}
+        {props.isCardDelete && <button className="movies-card__item-button movies-card__item-button_delete" onClick={handleCardButton}/>}
       </div>
       <p className="movies-card__item-time">{duration}</p>
     </li>

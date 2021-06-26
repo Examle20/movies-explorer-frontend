@@ -9,10 +9,11 @@ export const MoviesCardList = (props) => {
       <ul className="movies-card__list">
         {props.list.slice(0, props.amount).map((item) => {
           return <MoviesCard
-             key={item.id}
+             key={item.id || item.movieId}
              data={item}
              savedMovies={props.savedMovies}
              isCardDelete={props.isCardDelete}
+             onMovieButton={props.onMovieButton}
              onButton={props.onButton}
              onDeleteMovie={props.onDeleteMovie}
            />

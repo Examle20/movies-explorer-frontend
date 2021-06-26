@@ -45,6 +45,7 @@ export const Movies = (props) => {
         amount={moviesCount}
         onAmount={handleButtonMore}
         onButton={props.onSaveMovie}
+        onMovieButton={props.onMovieButton}
         savedMovies={props.savedMovies}
       />
       <NavigationMenu />

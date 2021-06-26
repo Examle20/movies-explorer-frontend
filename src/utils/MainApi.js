@@ -103,8 +103,8 @@ export const editUserInfo = (name, email) => {
 };
 
 export const saveMovie = (params) => {
-  const image = "https://api.nomoreparties.co" + params.image.url
-  const thumbnail = "https://api.nomoreparties.co" + params.image.formats.thumbnail.url
+  const image = !params.image.url ? params.image : "https://api.nomoreparties.co" + params.image.url
+  const thumbnail = params.thumbnail || ("https://api.nomoreparties.co" + params.image.formats.thumbnail.url)
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
     credentials:'include',
@@ -112,17 +112,17 @@ export const saveMovie = (params) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      country: params.country,
+      country: params.country || 'Russia',
       director: params.director,
       duration: params.duration,
       year: params.year,
       description: params.description,
       image: image,
-      trailer: params.trailerLink,
+      trailer: params.trailerLink || params.trailer,
       nameRU: params.nameRU,
       nameEN: params.nameEN,
       thumbnail: thumbnail,
-      movieId: params.id
+      movieId: params.id || params.movieId
     })
   })
     .then(res => {
@@ -146,9 +146,18 @@ export const deleteMovie = (id) => {
       if (!res.ok){
         return Promise.reject(res.status)
       } else{
-        return res;
+        return res.json();
       }
     })
+}
+
+export const handleLikeMovie = (params, isLiked) => {
+  const id = params.id || params.movieId
+  if(isLiked) {
+    return deleteMovie(id);
+  } else {
+    return saveMovie(params);
+  }
 }
 
 export const getMovies = () => {

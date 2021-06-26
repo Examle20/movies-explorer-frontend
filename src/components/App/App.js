@@ -91,6 +91,15 @@ function App(props) {
     }
   }
 
+  const handleGetSavedMovies = () => {
+    mainApi.getMovies()
+      .then((res) => {
+        setSaveMovies(res)
+        console.log(res)
+      })
+      .catch(err => console.log(err))
+  }
+
   const handleGetAllMovies = () => {
     moviesApi.getMovies()
       .then((res) => {
@@ -108,11 +117,24 @@ function App(props) {
   }
 
   const handleSearchMovies = (keyWord) => {
+    handleGetSavedMovies();
     handleMovies.checkFilms('movies', handleGetAllMovies)
     handleSearch(
       setMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('movies')), keyWord),
       handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('movies')), keyWord)
     )
+  }
+
+  const handleMovieLike = (movie) => {
+    const id = movie.id || movie.movieId;
+    const isLiked = (savedMovies.some(i => (i.movieId === id) && ((i.owner === currentUser.id))))
+    mainApi.handleLikeMovie(movie, isLiked)
+      .then((res) => {
+        console.log(res)
+        handleGetSavedMovies();
+        setMovies((state) => state.map((c) => c.id === movie.movieId ? res : c))
+      })
+      .catch(err => console.log(err))
   }
 
   const handleSaveMovie = (params, like) => {
@@ -128,14 +150,6 @@ function App(props) {
     mainApi.deleteMovie(id)
       .then(() => {
         dislike();
-      })
-      .catch(err => console.log(err))
-  }
-
-  const handleGetMovies = () => {
-    mainApi.getMovies()
-      .then((res) => {
-        setSaveMovies(res)
       })
       .catch(err => console.log(err))
   }
@@ -177,19 +191,18 @@ function App(props) {
             movies={movies}
             onSaveMovie={handleSaveMovie}
             onDeleteMovie={handleDeleteMovie}
-            onCheckMovies={handleGetMovies}
             savedMovies={savedMovies}
             isCardDelete={isCardDelete}
             onIsCardDelete={setIsCardDelete}
             onSearchMovies={handleSearchMovies}
             onIsSearch={setIsShortFilms}
+            onMovieButton={handleMovieLike}
           />
           <ProtectedRoute
             component={SavedMovies}
             path="/saved-movies"
             loggedIn={loggedIn}
             movies={savedMovies}
-            onGetMovies={handleGetMovies}
             onSetMovies={setSaveMovies}
             isCardDelete={isCardDelete}
             onIsCardDelete={setIsCardDelete}
