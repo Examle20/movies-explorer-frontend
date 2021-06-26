@@ -16,7 +16,7 @@ import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
 import * as mainApi from "../../utils/MainApi";
 import * as moviesApi from "../../utils/MoviesApi";
 import {Profile} from "../Profile/Profile";
-
+import * as handleMovies from "../../utils/handleMovies"
 function App(props) {
 
   const [loggedIn, setLoggedIn] = React.useState(false)
@@ -28,6 +28,7 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({});
   const [movies, setMovies] = React.useState([])
   const [savedMovies, setSaveMovies] = React.useState([])
+  const [isShortFilms, setIsShortFilms] = React.useState(false)
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -84,6 +85,36 @@ function App(props) {
       })
   }
 
+  const handleGetMoviesFromStorage = () => {
+    if(localStorage.getItem('movies')) {
+      setMovies(JSON.parse(localStorage.getItem('movies')));
+    }
+  }
+
+  const handleGetAllMovies = () => {
+    moviesApi.getMovies()
+      .then((res) => {
+        localStorage.setItem('movies', JSON.stringify(res))
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleSearch = (filmHandler, films, shortFilms) => {
+    if(!isShortFilms) {
+      filmHandler(films)
+    } else {
+      filmHandler(shortFilms)
+    }
+  }
+
+  const handleSearchMovies = (keyWord) => {
+    handleMovies.checkFilms('movies', handleGetAllMovies)
+    handleSearch(
+      setMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('movies')), keyWord),
+      handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('movies')), keyWord)
+    )
+  }
+
   const handleSaveMovie = (params, like) => {
     mainApi.saveMovie(params)
       .then(res => {
@@ -109,8 +140,6 @@ function App(props) {
       .catch(err => console.log(err))
   }
 
-
-
   React.useEffect(() => {
     if (loggedIn) {
       mainApi.getUser()
@@ -122,7 +151,9 @@ function App(props) {
   }, [loggedIn])
 
   React.useEffect(() => {
-    if(localStorage.getItem('authorize')) handleTokenCheck();
+    if(localStorage.getItem('authorize')){
+      handleTokenCheck();
+    }
   },[])
 
   return (
@@ -149,11 +180,19 @@ function App(props) {
             onCheckMovies={handleGetMovies}
             savedMovies={savedMovies}
             isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
+            onSearchMovies={handleSearchMovies}
+            onIsSearch={setIsShortFilms}
           />
           <ProtectedRoute
             component={SavedMovies}
             path="/saved-movies"
             loggedIn={loggedIn}
+            movies={savedMovies}
+            onGetMovies={handleGetMovies}
+            onSetMovies={setSaveMovies}
+            isCardDelete={isCardDelete}
+            onIsCardDelete={setIsCardDelete}
           />
           <ProtectedRoute
             component={Profile}

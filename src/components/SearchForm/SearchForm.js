@@ -10,24 +10,18 @@ export const SearchForm = (props) => {
     setKeyWord(e.target.value)
   }
 
-  const handleSearch = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    handleMovies.checkFilms(props.storageItem, props.onGetMovies);
-    props.setMovies(handleMovies.searchFilms(props.storageItem, keyWord));
-  }
-
-  const handleShortSearch = () => {
-    handleMovies.checkFilms(props.storageItem, props.onGetMovies);
-    props.setMovies(handleMovies.searchShortFilms(props.storageItem));
+    props.onSearchMovies(keyWord);
   }
 
   return (
     <section className="search-form">
-      <form action="" className="search-form__form" onSubmit={handleSearch}>
+      <form action="" className="search-form__form" onSubmit={handleSubmit}>
         <input value={keyWord || ''} onChange={handleKeyWord} type="text" className="search-form__input" placeholder="Фильм" required/>
         <button type="submit" className="search-form__button"/>
         <FilterCheckbox
-          onSort={handleShortSearch}
+          onIsSearch={props.onIsSearch}
           onMovies={props.setMovies}
         />
       </form>

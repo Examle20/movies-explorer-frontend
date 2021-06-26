@@ -22,7 +22,11 @@ export const Movies = (props) => {
   }
 
   React.useEffect(() => {
-    props.onCheckMovies();
+    // props.onCheckMovies();
+    props.onIsCardDelete(false)
+    return () => {
+      props.onIsCardDelete(false)
+    }
   },[])
 
   return (
@@ -31,7 +35,8 @@ export const Movies = (props) => {
         setMovies={props.onSetMovies}
         movies={props.movies}
         storageItem="movies"
-        onGetMovies={getMovies}
+        onSearchMovies={props.onSearchMovies}
+        onIsSearch={props.onIsSearch}
       />
       <MoviesCardList
         onDeleteMovie={props.onDeleteMovie}

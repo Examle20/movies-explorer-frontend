@@ -6,10 +6,12 @@ export const checkFilms = (item, getMovies) => {
   }
 }
 
-export const searchFilms = (item, keyWord) => {
- return JSON.parse(localStorage.getItem(item)).filter((el) => {return el.nameRU.includes(keyWord)})
+export const searchFilms = (films, keyWord) => {
+ return films.filter((el) => {return el.nameRU.includes(keyWord)})
 }
 
-export const searchShortFilms = (item) => {
-  return JSON.parse(localStorage.getItem(item)).filter((el) => {return el.duration <= 40})
+export const searchShortFilms = (films, keyWord) => {
+  return films.filter((el) => {return (el.duration <= 40 && el.nameRU.includes(keyWord))})
 }
+
+// JSON.parse(localStorage.getItem('movies'))
