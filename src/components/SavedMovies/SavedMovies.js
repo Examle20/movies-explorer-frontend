@@ -17,21 +17,21 @@ export const SavedMovies = (props) => {
   }
 
   React.useEffect(() => {
-    props.onGetMovies();
+    props.onGetSavedMovies();
     props.onIsCardDelete(true)
   }, [])
+
   return (
     <div className="saved-movies">
       <SearchForm
-        setMovies={props.onSetMovies}
-        movies={props.movies}
-        storageItem="saved-movies"
-        onGetMovies={getSavedMovies}
+        onSearchMovies={props.onGetSavedMovies}
+        onIsSearch={props.onIsSearch}
       />
       <MoviesCardList
         isCardDelete={props.isCardDelete}
         amount={props.movies.length}
         list={props.movies}
+        onMovieButton={props.onMovieButton}
       />
     </div>
   );

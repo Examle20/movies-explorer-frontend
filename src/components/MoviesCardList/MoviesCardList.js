@@ -14,8 +14,6 @@ export const MoviesCardList = (props) => {
              savedMovies={props.savedMovies}
              isCardDelete={props.isCardDelete}
              onMovieButton={props.onMovieButton}
-             onButton={props.onButton}
-             onDeleteMovie={props.onDeleteMovie}
            />
         })}
       </ul>

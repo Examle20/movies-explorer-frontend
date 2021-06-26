@@ -1,7 +1,6 @@
 import "./SearchForm.css"
 import {FilterCheckbox} from "../FilterCheckbox/FilterCheckbox";
 import React from "react";
-import * as handleMovies from "../../utils/handleMovies"
 export const SearchForm = (props) => {
 
   const [keyWord, setKeyWord] = React.useState('')
@@ -22,7 +21,6 @@ export const SearchForm = (props) => {
         <button type="submit" className="search-form__button"/>
         <FilterCheckbox
           onIsSearch={props.onIsSearch}
-          onMovies={props.setMovies}
         />
       </form>
     </section>
