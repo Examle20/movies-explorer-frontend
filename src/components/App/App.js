@@ -29,6 +29,7 @@ function App(props) {
   const [movies, setMovies] = React.useState([])
   const [savedMovies, setSaveMovies] = React.useState([])
   const [isShortFilms, setIsShortFilms] = React.useState(false)
+  const [downloadMovies, setDownloadMovies] = React.useState(0)
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -121,6 +122,7 @@ function App(props) {
   }
 
   const handleSearchSavedMovies = (keyWord) => {
+    console.log('поиск')
     handleSearch(
       setSaveMovies, handleMovies.searchFilms(savedMovies, keyWord),
       handleMovies.searchShortFilms(savedMovies, keyWord)
@@ -187,6 +189,9 @@ function App(props) {
             onSearchMovies={handleSearchMovies}
             onIsSearch={setIsShortFilms}
             onMovieButton={handleMovieLike}
+            onSetMovies={setMovies}
+            downLoadsMovies={downloadMovies}
+            onDownloadMovies={setDownloadMovies}
           />
           <ProtectedRoute
             component={SavedMovies}
@@ -199,6 +204,8 @@ function App(props) {
             onIsSearch={setIsShortFilms}
             movies={savedMovies}
             onMovieButton={handleDeleteSavedMovie}
+            downLoadsMovies={downloadMovies}
+            onDownloadMovies={setDownloadMovies}
           />
           <ProtectedRoute
             component={Profile}

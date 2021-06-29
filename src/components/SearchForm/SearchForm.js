@@ -12,6 +12,7 @@ export const SearchForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSearchMovies(keyWord);
+    props.onDownloadMovies(0);
   }
 
   return (

@@ -7,12 +7,6 @@ import * as moviesApi from "../../utils/MoviesApi";
 
 export const Movies = (props) => {
 
-  const [moviesCount, setMoviesCount] = React.useState(4)
-
-  const handleButtonMore = () => {
-    setMoviesCount((count) => count + 4)
-  }
-
   React.useEffect(() => {
     props.onIsCardDelete(false)
     return () => {
@@ -25,14 +19,17 @@ export const Movies = (props) => {
       <SearchForm
         onSearchMovies={props.onSearchMovies}
         onIsSearch={props.onIsSearch}
+        onDownloadMovies={props.onDownloadMovies}
       />
       <MoviesCardList
+        onSetMovies={props.onSetMovies}
         isCardDelete={props.isCardDelete}
         list={props.movies}
-        amount={moviesCount}
-        onAmount={handleButtonMore}
         onMovieButton={props.onMovieButton}
         savedMovies={props.savedMovies}
+        componentMain='movies'
+        downLoadsMovies={props.downLoadsMovies}
+        onDownloadMovies={props.onDownloadMovies}
       />
       <NavigationMenu />
     </div>

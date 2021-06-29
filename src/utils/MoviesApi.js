@@ -10,7 +10,7 @@ export const getMovies = () => {
     .then(res => {
       if (!res.ok){
         return Promise.reject(res.status)
-      } else{
+      } else {
         return res.json();
       }
     })

@@ -17,7 +17,7 @@ export const FilterCheckbox = (props) => {
   return (
     <div className="filter">
       <label className="filter__switch">
-        <input type="checkbox" className="filter__checkbox" checked={checked} onClick={handleCheckbox} />
+        <input type="checkbox" className="filter__checkbox" checked={checked} onChange={handleCheckbox} />
         <span className="filter__slider"/>
       </label>
       <p className="filter__title">Короткометражки</p>

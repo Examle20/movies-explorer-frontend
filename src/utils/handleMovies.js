@@ -5,7 +5,7 @@ export const checkFilms = (item, getMovies) => {
 }
 
 export const searchFilms = (films, keyWord) => {
- return films.filter((el) => {return el.nameRU.includes(keyWord)})
+ return films.filter((el) => {return el.nameRU.toLowerCase().includes(keyWord.toLowerCase())})
 }
 
 export const searchShortFilms = (films, keyWord) => {
