@@ -100,6 +100,7 @@ function App(props) {
     setIsLoader(true)
     mainApi.getMovies()
       .then((res) => {
+        localStorage.setItem('saved-movies', JSON.stringify(res))
         setSaveMovies(res)
         console.log(res)
         setIsLoader(false)
@@ -112,6 +113,7 @@ function App(props) {
   }
 
   const handleSearch = (filmHandler, films, shortFilms) => {
+    setMoviesNotFound(true)
     if(!isShortFilms) {
       filmHandler(films)
     } else {
@@ -151,10 +153,9 @@ function App(props) {
   }
 
   const handleSearchSavedMovies = (keyWord) => {
-    console.log('поиск')
     handleSearch(
-      setSaveMovies, handleMovies.searchFilms(savedMovies, keyWord),
-      handleMovies.searchShortFilms(savedMovies, keyWord)
+      setSaveMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('saved-movies')), keyWord),
+      handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('saved-movies')), keyWord)
     )
   }
 
