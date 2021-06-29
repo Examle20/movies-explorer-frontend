@@ -18,6 +18,12 @@ export const MoviesCard = (props) => {
     }
   }
 
+  const handleTime = () => {
+    let hours = Math.trunc(props.data.duration/60);
+    let minutes = props.data.duration % 60;
+    return hours + 'ч ' + minutes + 'м';
+  }
+
   const handleCardButton = () => {
     props.onMovieButton(props.data)
   }
@@ -34,7 +40,7 @@ export const MoviesCard = (props) => {
           />}
         {props.isCardDelete && <button className="movies-card__item-button movies-card__item-button_delete" onClick={handleCardButton}/>}
       </div>
-      <p className="movies-card__item-time">{duration}</p>
+      <p className="movies-card__item-time">{handleTime()}</p>
     </li>
   );
 }
