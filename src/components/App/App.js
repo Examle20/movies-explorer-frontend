@@ -19,17 +19,20 @@ import {Profile} from "../Profile/Profile";
 import * as handleMovies from "../../utils/handleMovies"
 function App(props) {
 
-  const [loggedIn, setLoggedIn] = React.useState(false)
-  const [isHeaderMain, setIsHeaderMain] = React.useState(false)
-  const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true)
-  const [isCardDelete, setIsCardDelete] = React.useState(false)
-  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false)
-  const [isFooterOpen, setIsFooterOpen] = React.useState(true)
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isHeaderMain, setIsHeaderMain] = React.useState(false);
+  const [isHeaderAndFooter, setIsHeaderAndFooter] = React.useState(true);
+  const [isCardDelete, setIsCardDelete] = React.useState(false);
+  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = React.useState(false);
+  const [isFooterOpen, setIsFooterOpen] = React.useState(true);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [movies, setMovies] = React.useState([])
-  const [savedMovies, setSaveMovies] = React.useState([])
-  const [isShortFilms, setIsShortFilms] = React.useState(false)
-  const [downloadMovies, setDownloadMovies] = React.useState(0)
+  const [movies, setMovies] = React.useState([]);
+  const [savedMovies, setSaveMovies] = React.useState([]);
+  const [isShortFilms, setIsShortFilms] = React.useState(false);
+  const [downloadMovies, setDownloadMovies] = React.useState(0);
+  const [isLoader, setIsLoader] = React.useState(false);
+  const [moviesNotfound, setMoviesNotFound] = React.useState(false);
+  const [errorRequest, setErrorRequest] = React.useState(false);
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -69,7 +72,10 @@ function App(props) {
     mainApi.signOut()
       .then(() => {
         setLoggedIn(false);
+        setMovies([])
+        setSaveMovies([])
         localStorage.removeItem('authorize')
+        localStorage.removeItem('movies')
       })
       .catch(err => {
         console.log(err)
@@ -86,22 +92,23 @@ function App(props) {
       })
   }
 
+  const handleNotFoundFilms = (films) => {
+    if (films.length === 0) setMoviesNotFound(true)
+  }
 
   const handleGetSavedMovies = () => {
+    setIsLoader(true)
     mainApi.getMovies()
       .then((res) => {
         setSaveMovies(res)
         console.log(res)
+        setIsLoader(false)
       })
-      .catch(err => console.log(err))
-  }
-
-  const handleGetAllMovies = () => {
-    moviesApi.getMovies()
-      .then((res) => {
-        localStorage.setItem('movies', JSON.stringify(res))
+      .catch(err => {
+        setIsLoader(false)
+        setErrorRequest(true)
+        console.log(err)
       })
-      .catch(err => console.log(err))
   }
 
   const handleSearch = (filmHandler, films, shortFilms) => {
@@ -110,15 +117,37 @@ function App(props) {
     } else {
       filmHandler(shortFilms)
     }
+    handleNotFoundFilms(films)
+  }
+
+  const handleGetAllMovies = (keyWord) => {
+    setIsLoader(true)
+    moviesApi.getMovies()
+      .then((res) => {
+        setErrorRequest(false)
+        localStorage.setItem('movies', JSON.stringify(res))
+        handleSearch(
+          setMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('movies')), keyWord),
+          handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('movies')), keyWord)
+        )
+        setIsLoader(false)
+      })
+      .catch(err => {
+        setIsLoader(false)
+        console.log(err)
+      })
   }
 
   const handleSearchMovies = (keyWord) => {
     handleGetSavedMovies();
-    handleMovies.checkFilms('movies', handleGetAllMovies)
-    handleSearch(
-      setMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('movies')), keyWord),
-      handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('movies')), keyWord)
-    )
+    if(!localStorage.getItem('movies')){
+      handleGetAllMovies(keyWord)
+    } else {
+      handleSearch(
+        setMovies, handleMovies.searchFilms(JSON.parse(localStorage.getItem('movies')), keyWord),
+        handleMovies.searchShortFilms(JSON.parse(localStorage.getItem('movies')), keyWord)
+      )
+    }
   }
 
   const handleSearchSavedMovies = (keyWord) => {
@@ -192,6 +221,10 @@ function App(props) {
             onSetMovies={setMovies}
             downLoadsMovies={downloadMovies}
             onDownloadMovies={setDownloadMovies}
+            isLoader={isLoader}
+            moviesNotfound={moviesNotfound}
+            errorRequest={errorRequest}
+            onErrorRequest={setErrorRequest}
           />
           <ProtectedRoute
             component={SavedMovies}
@@ -206,6 +239,10 @@ function App(props) {
             onMovieButton={handleDeleteSavedMovie}
             downLoadsMovies={downloadMovies}
             onDownloadMovies={setDownloadMovies}
+            isLoader={isLoader}
+            moviesNotfound={moviesNotfound}
+            errorRequest={errorRequest}
+            onErrorRequest={setErrorRequest}
           />
           <ProtectedRoute
             component={Profile}

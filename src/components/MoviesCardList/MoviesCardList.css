@@ -90,3 +90,11 @@
     margin-top: 50px;
   }
 }
+
+.movies-card__error {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+}

@@ -1,20 +1,15 @@
 import "./MoviesCardList.css"
 import React from "react";
 import {MoviesCard} from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
 export const MoviesCardList = (props) => {
   const [moviesCount, setMoviesCount] = React.useState(0)
-
-
-  const checkComponent = (componentName) => {
-    return {moviesCount: props.list.length};
-  }
-
+  console.log(props.errorRequest)
   const getMoviesCount = (windowWidth) => {
     if (props.componentName === 'savedMovies') {
       return {moviesCount: props.list.length};
     }
-
     if (windowWidth >= 1280) {
       return {moviesCount: props.downLoadsMovies || 12, moviesCountStep: 4}
     }
@@ -65,8 +60,9 @@ export const MoviesCardList = (props) => {
 
   return (
     <section className="movies-card">
+      {props.isLoader && <Preloader />}
       <ul className="movies-card__list">
-        {props.list.slice(0, moviesCount).map((item) => {
+        {props.list.length !==0 && props.list.slice(0, moviesCount).map((item) => {
           return <MoviesCard
              key={item.id || item.movieId}
              data={item}
@@ -76,6 +72,10 @@ export const MoviesCardList = (props) => {
            />
         })}
       </ul>
+      {props.list.length === 0 && props.moviesNotfound && <p className="movies-card__error"> Ничего не найдено</p>}
+      {props.errorRequest && <p className="movies-card__error"> Во время запроса произошла ошибка.
+        Возможно, проблема с соединением или сервер недоступен.
+        Подождите немного и попробуйте ещё раз</p>}
       <button className={`movies-card__button-more ${(moviesCount >= props.list.length) && "movies-card__button-more_hidden"}`} onClick={handleButtonMore}>Ещё</button>
     </section>
   );

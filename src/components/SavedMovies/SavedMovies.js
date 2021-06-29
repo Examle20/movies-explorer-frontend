@@ -8,6 +8,7 @@ export const SavedMovies = (props) => {
 
   React.useEffect(() => {
     props.onGetSavedMovies();
+    props.onErrorRequest(false)
     props.onIsCardDelete(true)
   }, [])
 
@@ -26,6 +27,9 @@ export const SavedMovies = (props) => {
         componentName="savedMovies"
         downLoadsMovies={props.downLoadsMovies}
         onDownloadMovies={props.onDownloadMovies}
+        isLoader={props.isLoader}
+        moviesNotfound={props.moviesNotfound}
+        errorRequest={props.errorRequest}
       />
     </div>
   );
