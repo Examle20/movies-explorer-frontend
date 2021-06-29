@@ -4,7 +4,7 @@ import {CurrentUserContext} from "../../contexts/currentUserContext";
 export const MoviesCard = (props) => {
 
   const currentUser = React.useContext(CurrentUserContext)
-  const { nameRU, duration, image } = props.data
+  const { nameRU, image } = props.data
   const id = props.data.id || props.data.movieId
   const trailer = props.data.trailerLink || props.data.trailer
   const savedMovies = props.savedMovies || []
@@ -20,6 +20,7 @@ export const MoviesCard = (props) => {
   }
 
   const handleTime = () => {
+    if(props.data.duration <= 60) { return props.data.duration + 'м'}
     let hours = Math.trunc(props.data.duration/60);
     let minutes = props.data.duration % 60;
     return hours + 'ч ' + minutes + 'м';
@@ -31,7 +32,7 @@ export const MoviesCard = (props) => {
 
   return (
     <li className="movies-card__list-item">
-      <a href={trailer} target="_blank">
+      <a href={trailer} target="_blank" rel="noreferrer">
       <img src={handleLink()} alt="Что-то с ссылкой на изображение" className="movies-card__item-image"
       />
       </a>

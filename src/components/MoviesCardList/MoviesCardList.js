@@ -38,6 +38,7 @@ export const MoviesCardList = (props) => {
     props.onDownloadMovies((count) => count + moviesCountStep)
   }
 
+
   const handleButtonMore = () => {
     handleStep(getMoviesCount(window.innerWidth))
   }

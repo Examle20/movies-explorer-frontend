@@ -7,10 +7,10 @@ export const FilterCheckbox = (props) => {
   const handleCheckbox = () => {
     if(!checked) {
       setChecked(true);
-      props.onIsSearch(true);
+      props.onShortSearch(props.onSetMovies, props.list)
     } else {
       setChecked(false);
-      props.onIsSearch(false);
+      props.onSearchMovies(props.keyWord)
     }
   }
 

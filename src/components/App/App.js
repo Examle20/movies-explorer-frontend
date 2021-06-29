@@ -11,12 +11,12 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
-import Preloader from "../Preloader/Preloader";
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute";
 import * as mainApi from "../../utils/MainApi";
 import * as moviesApi from "../../utils/MoviesApi";
 import {Profile} from "../Profile/Profile";
 import * as handleMovies from "../../utils/handleMovies"
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 function App(props) {
 
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -33,6 +33,8 @@ function App(props) {
   const [isLoader, setIsLoader] = React.useState(false);
   const [moviesNotfound, setMoviesNotFound] = React.useState(false);
   const [errorRequest, setErrorRequest] = React.useState(false);
+  const [isFailPopupOpen, setIsFailPopupOpen] = React.useState(false)
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = React.useState(false)
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -40,6 +42,7 @@ function App(props) {
         props.history.push('/signin');
       })
       .catch((err) => {
+        setIsFailPopupOpen(true)
         console.log(err);
       });
   }
@@ -52,6 +55,7 @@ function App(props) {
         localStorage.setItem('authorize', 'true');
       })
       .catch( err => {
+        setIsFailPopupOpen(true)
         console.log(err);
       })
   }
@@ -86,6 +90,7 @@ function App(props) {
     mainApi.editUserInfo(name, email)
       .then((res) => {
         setCurrentUser(res)
+        setIsSuccessPopupOpen(true)
       })
       .catch( err => {
         console.log(err);
@@ -111,14 +116,14 @@ function App(props) {
       })
   }
 
-  const handleSearch = (filmHandler, films, shortFilms) => {
+  const handleSearch = (filmHandler, films) => {
     setMoviesNotFound(true)
-    if(!isShortFilms) {
-      filmHandler(films)
-    } else {
-      filmHandler(shortFilms)
-    }
+    filmHandler(films)
     handleNotFoundFilms(films)
+  }
+
+  const handleSearchShortsFilms = (filmHandler, films) => {
+    filmHandler(handleMovies.searchShortFilms(films))
   }
 
   const handleGetAllMovies = (keyWord) => {
@@ -168,7 +173,6 @@ function App(props) {
     const isLiked = (savedMovies.some(i => (i.movieId === id) && ((i.owner === currentUser.id))))
     mainApi.handleLikeMovie(movie, isLiked)
       .then((res) => {
-        console.log(res)
         handleGetSavedMovies();
         setMovies((state) => state.map((c) => c.id === movie.movieId ? res : c))
       })
@@ -179,8 +183,16 @@ function App(props) {
     mainApi.deleteMovie(movie.movieId)
       .then(() => {
         setSaveMovies((movies) => movies.filter((c) => c.movieId !== movie.movieId))
+        const films = JSON.parse(localStorage.getItem('saved-movies'))
+        localStorage.setItem('saved-movies', JSON.stringify(films.filter((el) => {return el.movieId !== movie.movieId})))
+        console.log(JSON.parse(localStorage.getItem('saved-movies')))
       })
       .catch(err => console.log(err))
+  }
+
+  const handleClosePopups = () => {
+    setIsFailPopupOpen(false)
+    setIsSuccessPopupOpen(false)
   }
 
   React.useEffect(() => {
@@ -231,6 +243,7 @@ function App(props) {
             errorRequest={errorRequest}
             onErrorRequest={setErrorRequest}
             onNotFoundError={setMoviesNotFound}
+            onShortSearch={handleSearchShortsFilms}
           />
           <ProtectedRoute
             component={SavedMovies}
@@ -249,6 +262,8 @@ function App(props) {
             moviesNotfound={moviesNotfound}
             errorRequest={errorRequest}
             onErrorRequest={setErrorRequest}
+            onSetMovies={setSaveMovies}
+            onShortSearch={handleSearchShortsFilms}
           />
           <ProtectedRoute
             component={Profile}
@@ -278,6 +293,16 @@ function App(props) {
         <NavigationMenu
           isNavigationMenuOpen={isNavigationMenuOpen}
           onNavigationMenu={setIsNavigationMenuOpen}
+        />
+        <InfoTooltip
+          isOpen={isSuccessPopupOpen}
+          message="Вы успешно зарегистрировались!"
+          onClose={handleClosePopups}
+        />
+        <InfoTooltip
+          isOpen={isFailPopupOpen}
+          message="Что-то пошло не так! Попробуйте ещё раз."
+          onClose={handleClosePopups}
         />
       </div>
     </CurrentUserContext.Provider>

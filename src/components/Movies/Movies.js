@@ -3,7 +3,6 @@ import {SearchForm} from "../SearchForm/SearchForm";
 import {MoviesCardList} from "../MoviesCardList/MoviesCardList";
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
-import * as moviesApi from "../../utils/MoviesApi";
 
 export const Movies = (props) => {
 
@@ -22,6 +21,10 @@ export const Movies = (props) => {
         onSearchMovies={props.onSearchMovies}
         onIsSearch={props.onIsSearch}
         onDownloadMovies={props.onDownloadMovies}
+        list={props.movies}
+        onShortSearch={props.onShortSearch}
+        onSetMovies={props.onSetMovies}
+        onSearch={props.onMovieButton}
       />
       <MoviesCardList
         onSetMovies={props.onSetMovies}

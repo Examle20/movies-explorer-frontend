@@ -1,7 +1,6 @@
 import "./Profile.css"
 import {Input} from "../Input/Input";
 import React from "react";
-import {Link} from "react-router-dom";
 import {CurrentUserContext} from "../../contexts/currentUserContext";
 
 export const Profile = (props) => {

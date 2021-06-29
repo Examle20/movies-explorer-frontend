@@ -22,6 +22,11 @@ export const SearchForm = (props) => {
         <button type="submit" className="search-form__button"/>
         <FilterCheckbox
           onIsSearch={props.onIsSearch}
+          keyWord={keyWord}
+          list={props.list}
+          onShortSearch={props.onShortSearch}
+          onSetMovies={props.onSetMovies}
+          onSearchMovies={props.onSearchMovies}
         />
       </form>
     </section>

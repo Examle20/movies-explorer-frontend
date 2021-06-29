@@ -92,15 +92,16 @@
   padding: 0;
   width: 27px;
   height: 27px;
-  margin: 13px 25px 0 0;
   border: none;
   outline: none;
   background-color: transparent;
   background-image: url("../../images/menu-close.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  align-self: flex-end;
   cursor: pointer;
+  position: absolute;
+  right: 22px;
+  top: 22px
 }
 
 .navigation-menu__button-close:hover {
@@ -112,7 +113,6 @@
   .navigation-menu__button-close {
     width: 31px;
     height: 31px;
-    margin: 13px 14px 0 0;
   }
 }
 
