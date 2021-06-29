@@ -97,12 +97,11 @@ function App(props) {
   }
 
   const handleGetSavedMovies = () => {
-    setIsLoader(true)
+    if(isCardDelete) setIsLoader(true)
     mainApi.getMovies()
       .then((res) => {
         localStorage.setItem('saved-movies', JSON.stringify(res))
         setSaveMovies(res)
-        console.log(res)
         setIsLoader(false)
       })
       .catch(err => {
@@ -123,7 +122,6 @@ function App(props) {
   }
 
   const handleGetAllMovies = (keyWord) => {
-    setIsLoader(true)
     moviesApi.getMovies()
       .then((res) => {
         setErrorRequest(false)
@@ -141,7 +139,13 @@ function App(props) {
   }
 
   const handleSearchMovies = (keyWord) => {
-    handleGetSavedMovies();
+    mainApi.getMovies()
+      .then((res) => {
+        setSaveMovies(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     if(!localStorage.getItem('movies')){
       handleGetAllMovies(keyWord)
     } else {
@@ -226,6 +230,7 @@ function App(props) {
             moviesNotfound={moviesNotfound}
             errorRequest={errorRequest}
             onErrorRequest={setErrorRequest}
+            onNotFoundError={setMoviesNotFound}
           />
           <ProtectedRoute
             component={SavedMovies}

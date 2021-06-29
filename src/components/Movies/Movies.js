@@ -10,6 +10,7 @@ export const Movies = (props) => {
   React.useEffect(() => {
     props.onIsCardDelete(false)
     props.onErrorRequest(false)
+    props.onNotFoundError(false)
     return () => {
       props.onIsCardDelete(false)
     }

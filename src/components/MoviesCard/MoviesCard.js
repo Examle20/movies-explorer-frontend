@@ -6,6 +6,7 @@ export const MoviesCard = (props) => {
   const currentUser = React.useContext(CurrentUserContext)
   const { nameRU, duration, image } = props.data
   const id = props.data.id || props.data.movieId
+  const trailer = props.data.trailerLink || props.data.trailer
   const savedMovies = props.savedMovies || []
   const isLiked = (savedMovies.some(i => (i.movieId === id) && (i.owner === currentUser.id)));
 
@@ -30,8 +31,10 @@ export const MoviesCard = (props) => {
 
   return (
     <li className="movies-card__list-item">
+      <a href={trailer} target="_blank">
       <img src={handleLink()} alt="Что-то с ссылкой на изображение" className="movies-card__item-image"
       />
+      </a>
       <div className="movies-card__item-group">
         <h2 className="movies-card__item-title">{nameRU}</h2>
         {!props.isCardDelete &&

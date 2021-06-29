@@ -5,7 +5,6 @@ import Preloader from "../Preloader/Preloader";
 
 export const MoviesCardList = (props) => {
   const [moviesCount, setMoviesCount] = React.useState(0)
-  console.log(props.errorRequest)
   const getMoviesCount = (windowWidth) => {
     if (props.componentName === 'savedMovies') {
       return {moviesCount: props.list.length};
@@ -44,7 +43,6 @@ export const MoviesCardList = (props) => {
   }
 
   React.useEffect(() => {
-    console.log(props.downLoadsMovies)
     if(props.componentName !== 'savedMovies') {
       window.addEventListener("resize", handleWindowUpdate)
       return () => {
@@ -55,7 +53,6 @@ export const MoviesCardList = (props) => {
 
   React.useEffect(() => {
     handleAmount(getMoviesCount(window.innerWidth))
-    console.log(moviesCount)
   },[props.list])
 
   return (
