@@ -127,6 +127,7 @@ function App(props) {
   }
 
   const handleGetAllMovies = (keyWord) => {
+    setIsLoader(true)
     moviesApi.getMovies()
       .then((res) => {
         setErrorRequest(false)
