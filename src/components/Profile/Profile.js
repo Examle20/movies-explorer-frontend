@@ -47,22 +47,26 @@ export const Profile = (props) => {
       <form ref={formRef} action="" className="profile__form">
         <div className="profile__form-item">
           <Input
+            name="Имя"
             type="text"
             className="profile__form-input"
             minLength="2"
             maxLength="30"
             value={name || ''}
+            placeholder={currentUser.name}
             onChange={handleChangeName}
           />
           <label className="profile__form-label">Имя</label>
         </div>
         <div className="profile__form-item">
           <Input
+            name="Email"
             type="email"
             className="profile__form-input"
             minLength="2"
             maxLength="30"
             value={email || ''}
+            placeholder={currentUser.email}
             onChange={handleChangeEmail}
           />
           <label className="profile__form-label">E-mail</label>

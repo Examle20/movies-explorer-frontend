@@ -11,7 +11,12 @@ export const Input = (props) => {
     if(!e.target.validity.valid) {
       setErrorMessage(e.target.validationMessage);
       setIsError(true)
-    } else {
+    }
+     else if(e.target.value === props.placeholder) {
+        setIsError(true)
+        setErrorMessage(`Поле ${props.name} должно отличаться от текущего`)
+      }
+    else {
       setErrorMessage('')
       setIsError(false)
     }
@@ -20,7 +25,8 @@ export const Input = (props) => {
   return (
     <div className="input">
       <input
-        type={props.type}
+        name={props.name || ''}
+        type={props.type || ''}
         className={inputClassName}
         autoComplete="off"
         minLength={props.minLength}
