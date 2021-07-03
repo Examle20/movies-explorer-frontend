@@ -313,7 +313,7 @@ function App(props) {
         />
         <InfoTooltip
           isOpen={isSuccessPopupOpen}
-          message="Вы успешно зарегистрировались!"
+          message="Успешно!"
           onClose={handleClosePopups}
         />
         <InfoTooltip
