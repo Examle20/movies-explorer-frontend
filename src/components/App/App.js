@@ -7,7 +7,7 @@ import {Register} from "../Register/Register";
 import {Login} from "../Login/Login";
 import {NotFound} from "../NotFound/NotFound";
 import {CurrentUserContext} from "../../contexts/currentUserContext";
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, useLocation } from 'react-router-dom';
 import React from "react";
 import {NavigationMenu} from "../NavigationMenu/NavigationMenu";
 import "./App.css"
@@ -17,6 +17,7 @@ import * as moviesApi from "../../utils/MoviesApi";
 import {Profile} from "../Profile/Profile";
 import * as handleMovies from "../../utils/handleMovies"
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
+
 function App(props) {
 
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -35,6 +36,7 @@ function App(props) {
   const [errorRequest, setErrorRequest] = React.useState(false);
   const [isFailPopupOpen, setIsFailPopupOpen] = React.useState(false)
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = React.useState(false)
+  const location = useLocation();
 
   const handleRegister = (name, email, password) => {
     mainApi.register(name, email, password)
@@ -64,7 +66,7 @@ function App(props) {
     mainApi.checkToken().then((res) => {
       if (res){
         setLoggedIn(true)
-        props.history.push('/movies')
+        props.history.push(location.pathname.toString())
       }
     })
       .catch(err => {
