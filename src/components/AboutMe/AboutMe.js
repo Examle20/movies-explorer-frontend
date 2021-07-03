@@ -17,8 +17,8 @@ export const AboutMe = () => {
           </p>
           <nav>
             <ul className="about-me__links">
-              <li className="about-me__links-item"><a href="https://vk.com/dzinovyev88" target="_blank" className="about-me__link">Вконтакте</a></li>
-              <li className="about-me__links-item"><a href="https://github.com/Examle20" target="_blank" className="about-me__link">Github</a></li>
+              <li className="about-me__links-item"><a href="https://vk.com/dzinovyev88" rel="noreferrer" target="_blank" className="about-me__link">Вконтакте</a></li>
+              <li className="about-me__links-item"><a href="https://github.com/Examle20" rel="noreferrer" target="_blank" className="about-me__link">Github</a></li>
             </ul>
           </nav>
         </div>

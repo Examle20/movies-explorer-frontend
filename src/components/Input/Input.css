@@ -3,6 +3,17 @@
 }
 
 .input__error {
+  color: #EE3465;
+  border-bottom: 1px solid #EE3465;
+}
+
+.input__error:focus {
+  color: #EE3465;
+  border-bottom: 1px solid #EE3465;
+}
+
+
+.input__error-text {
   position: absolute;
   top: calc(100% + 5px);
   left: 0;

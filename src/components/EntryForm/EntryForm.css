@@ -83,6 +83,11 @@
   cursor: pointer;
 }
 
+.entry-form__form-button_inactive {
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+}
+
 .entry-form__form-button:hover {
   opacity: 0.6;
   transition-duration: 1s;

@@ -98,6 +98,10 @@
   cursor: pointer;
 }
 
+.profile__form-button_inactive {
+  opacity: 0.5;
+}
+
 .profile__form-button:hover {
   opacity: 0.6;
   transition-duration: 1s;
@@ -118,12 +122,14 @@
 }
 
 .profile__link-out {
-  text-decoration: none;
   color: #EE3465;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   margin-top: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .profile__link-out:hover {

@@ -3,6 +3,23 @@ import {Input} from "../Input/Input";
 import React from "react";
 
 export const Login = (props) => {
+
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onLogin(email, password);
+  }
+
   return (
     <>
       <EntryForm
@@ -13,6 +30,8 @@ export const Login = (props) => {
         link="Регистрация"
         to="signup"
         buttonClass="entry-form__form-button entry-form__form-button_login"
+        buttonInactive="entry-form__form-button_inactive"
+        onHandleButton={handleSubmit}
         children={(
           <>
             <div className="entry-form__form-item">
@@ -21,6 +40,8 @@ export const Login = (props) => {
                 className="entry-form__form-input"
                 minLength="2"
                 maxLength="30"
+                value={email || ''}
+                onChange={handleChangeEmail}
               />
               <label className="entry-form__form-label">E-mail</label>
             </div>
@@ -30,6 +51,8 @@ export const Login = (props) => {
                 className="entry-form__form-input"
                 minLength="2"
                 maxLength="30"
+                value={password || ''}
+                onChange={handleChangePassword}
               />
               <label className="entry-form__form-label">Пароль</label>
             </div>

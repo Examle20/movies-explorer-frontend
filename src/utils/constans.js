@@ -1,22 +1,8 @@
-import logo1 from "../images/img1.png"
-import logo2 from "../images/img2.png"
-export const allFilms = [
-  {src: logo1, title:"Пи Джей Харви: A dog called money", time:"1ч42м", isLiked: true},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-  {src: logo2, title:"33 слова о дизайне", time:"1ч42м", isLiked: true},
-  {src: logo1, title:"33 слова о дизайне", time:"1ч42м", isLiked: false},
-]
+export const MAX_WIDTH = 1280
+export const MIDDLE_WIDTH = 480
+export const MAX_WIDTH_COUNT = 12
+export const MAX_WIDTH_COUNT_STEP = 4
+export const MIDDLE_WIDTH_COUNT = 8
+export const MIDDLE_WIDTH_COUNT_STEP = 2
+export const LOW_WIDTH_COUNT = 5
+export const SHORT_DURATION = 40
