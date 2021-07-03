@@ -27,6 +27,7 @@ export const Input = (props) => {
         maxLength={props.maxLength}
         value={props.value}
         onChange={handleChange}
+        placeholder={props.placeholder || ''}
         required
       />
       <span className="input__error-text">

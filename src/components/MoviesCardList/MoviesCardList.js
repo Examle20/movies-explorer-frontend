@@ -2,6 +2,16 @@ import "./MoviesCardList.css"
 import React from "react";
 import {MoviesCard} from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
+import {
+  MAX_WIDTH,
+  MIDDLE_WIDTH,
+  MAX_WIDTH_COUNT,
+  MAX_WIDTH_COUNT_STEP,
+  MIDDLE_WIDTH_COUNT,
+  MIDDLE_WIDTH_COUNT_STEP,
+  LOW_WIDTH_COUNT,
+  SHORT_DURATION,
+} from "../../utils/constans"
 
 export const MoviesCardList = (props) => {
   const [moviesCount, setMoviesCount] = React.useState(0)
@@ -9,14 +19,14 @@ export const MoviesCardList = (props) => {
     if (props.componentName === 'savedFilteredMovies') {
       return {moviesCount: props.list.length};
     }
-    if (windowWidth >= 1280) {
-      return {moviesCount: props.downLoadsMovies || 12, moviesCountStep: 4}
+    if (windowWidth >= MAX_WIDTH) {
+      return {moviesCount: props.downLoadsMovies || MAX_WIDTH_COUNT, MAX_WIDTH_COUNT_STEP: 4}
     }
-    else if (windowWidth >= 480 && windowWidth < 1280) {
-      return {moviesCount: props.downLoadsMovies || 8, moviesCountStep: 2}
+    else if (windowWidth >= MIDDLE_WIDTH && windowWidth < MAX_WIDTH) {
+      return {moviesCount: props.downLoadsMovies || MIDDLE_WIDTH_COUNT, moviesCountStep: MIDDLE_WIDTH_COUNT_STEP}
     }
     else {
-      return {moviesCount: props.downLoadsMovies || 5, moviesCountStep: 2}
+      return {moviesCount: props.downLoadsMovies || LOW_WIDTH_COUNT, moviesCountStep: MIDDLE_WIDTH_COUNT_STEP}
     }
   }
 

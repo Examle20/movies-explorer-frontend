@@ -1,3 +1,5 @@
+import {SHORT_DURATION} from "./constans";
+
 export const checkFilms = (item, getMovies) => {
   if (!localStorage.getItem(item)){
     getMovies();
@@ -9,5 +11,5 @@ export const searchFilms = (films, keyWord) => {
 }
 
 export const searchShortFilms = (films) => {
-  return films.filter((el) => {return (el.duration <= 40)})
+  return films.filter((el) => {return (el.duration <= SHORT_DURATION)})
 }
