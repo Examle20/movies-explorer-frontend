@@ -6,7 +6,7 @@ import Preloader from "../Preloader/Preloader";
 export const MoviesCardList = (props) => {
   const [moviesCount, setMoviesCount] = React.useState(0)
   const getMoviesCount = (windowWidth) => {
-    if (props.componentName === 'savedMovies') {
+    if (props.componentName === 'savedFilteredMovies') {
       return {moviesCount: props.list.length};
     }
     if (windowWidth >= 1280) {
@@ -22,7 +22,7 @@ export const MoviesCardList = (props) => {
 
   const handleAmount = ({moviesCount}) => {
     setMoviesCount(moviesCount)
-    props.onDownloadMovies(moviesCount)
+    if (props.componentName !=='savedFilteredMovies') {props.onDownloadMovies(moviesCount)}
   }
 
   const handleWindowWidth = () => {
@@ -44,7 +44,7 @@ export const MoviesCardList = (props) => {
   }
 
   React.useEffect(() => {
-    if(props.componentName !== 'savedMovies') {
+    if(props.componentName !== 'savedFilteredMovies') {
       window.addEventListener("resize", handleWindowUpdate)
       return () => {
         window.removeEventListener("resize", handleWindowUpdate)
@@ -54,6 +54,7 @@ export const MoviesCardList = (props) => {
 
   React.useEffect(() => {
     handleAmount(getMoviesCount(window.innerWidth))
+    localStorage.setItem(props.componentName, JSON.stringify(props.list))
   },[props.list])
 
   return (

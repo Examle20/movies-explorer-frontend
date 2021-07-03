@@ -82,6 +82,8 @@ function App(props) {
         setSaveMovies([])
         localStorage.removeItem('authorize')
         localStorage.removeItem('movies')
+        localStorage.removeItem('filteredMovies')
+        localStorage.removeItem('savedFilteredMovies')
       })
       .catch(err => {
         console.log(err)
@@ -208,9 +210,21 @@ function App(props) {
     }
   }, [loggedIn])
 
+  const getFilteredFilms = () => {
+    console.log(JSON.parse(localStorage.getItem('filteredMovies')))
+    console.log(JSON.parse(localStorage.getItem('savedFilteredMovies')))
+    if (localStorage.getItem('filteredMovies')) {
+      setMovies(JSON.parse(localStorage.getItem('filteredMovies')))
+    }
+    if (localStorage.getItem('savedFilteredMovies')) {
+      setSaveMovies(JSON.parse(localStorage.getItem('savedFilteredMovies')))
+    }
+  }
+
   React.useEffect(() => {
     if(localStorage.getItem('authorize')){
       handleTokenCheck();
+      getFilteredFilms();
     }
   },[])
 

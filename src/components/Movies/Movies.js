@@ -32,7 +32,7 @@ export const Movies = (props) => {
         list={props.movies}
         onMovieButton={props.onMovieButton}
         savedMovies={props.savedMovies}
-        componentMain='movies'
+        componentName='filteredMovies'
         downLoadsMovies={props.downLoadsMovies}
         onDownloadMovies={props.onDownloadMovies}
         isLoader={props.isLoader}
