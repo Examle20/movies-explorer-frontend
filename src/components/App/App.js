@@ -190,7 +190,6 @@ function App(props) {
         setSaveMovies((movies) => movies.filter((c) => c.movieId !== movie.movieId))
         const films = JSON.parse(localStorage.getItem('saved-movies'))
         localStorage.setItem('saved-movies', JSON.stringify(films.filter((el) => {return el.movieId !== movie.movieId})))
-        console.log(JSON.parse(localStorage.getItem('saved-movies')))
       })
       .catch(err => console.log(err))
   }
@@ -211,8 +210,6 @@ function App(props) {
   }, [loggedIn])
 
   const getFilteredFilms = () => {
-    console.log(JSON.parse(localStorage.getItem('filteredMovies')))
-    console.log(JSON.parse(localStorage.getItem('savedFilteredMovies')))
     if (localStorage.getItem('filteredMovies')) {
       setMovies(JSON.parse(localStorage.getItem('filteredMovies')))
     }
